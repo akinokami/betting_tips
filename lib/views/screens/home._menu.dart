@@ -1,8 +1,7 @@
 import 'package:betting_tips/controller/home_controller.dart';
-import 'package:betting_tips/views/screens/matches/matches_scren.dart';
-import 'package:betting_tips/views/screens/news/news_screen.dart';
-import 'package:betting_tips/views/screens/results/result_screen.dart';
-import 'package:betting_tips/views/screens/upcoming/upcoming_screen.dart';
+import 'package:betting_tips/views/screens/setting/setting_screen.dart';
+import 'package:betting_tips/views/screens/tips/tips_screen.dart';
+import 'package:betting_tips/views/screens/live/live_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -43,7 +42,7 @@ class Home extends StatelessWidget {
                     size: 20.0,
                   ),
                 ),
-                label: 'Matches',
+                label: 'Tips',
                 backgroundColor: AppTheme.white,
               ),
               BottomNavigationBarItem(
@@ -54,18 +53,7 @@ class Home extends StatelessWidget {
                     size: 20.0,
                   ),
                 ),
-                label: 'Upcoming',
-                backgroundColor: AppTheme.white,
-              ),
-              BottomNavigationBarItem(
-                icon: Container(
-                  margin: const EdgeInsets.only(bottom: 7),
-                  child: const Icon(
-                    Icons.location_history,
-                    size: 20.0,
-                  ),
-                ),
-                label: 'Results',
+                label: 'Live',
                 backgroundColor: AppTheme.white,
               ),
               BottomNavigationBarItem(
@@ -76,7 +64,7 @@ class Home extends StatelessWidget {
                     size: 20.0,
                   ),
                 ),
-                label: 'News',
+                label: 'Settings',
                 backgroundColor: AppTheme.white,
               ),
             ],
@@ -94,10 +82,9 @@ class Home extends StatelessWidget {
       body: Obx(() => IndexedStack(
             index: homeController.tabIndex.value,
             children: const [
-              MatchesScren(),
-              UpcomingScreen(),
-              ResultScreen(),
-              NewsScreen(),
+              TipsScreen(),
+              LiveScreen(),
+              SettingScreen(),
             ],
           )),
     ));
