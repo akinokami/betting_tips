@@ -128,16 +128,58 @@ class FinishScreen extends StatelessWidget {
                                       ),
                                     ),
                                     Container(
-                                      width: 20.w,
-                                      height: 20.w,
+                                      height: 15.w,
+                                      padding: EdgeInsets.only(
+                                          left: 5.w, right: 5.w),
                                       decoration: BoxDecoration(
-                                          color: AppTheme.premiumColor2,
+                                          color: finishController
+                                                          .finishList[index]
+                                                          .hasAi ==
+                                                      true &&
+                                                  finishController
+                                                          .finishList[index]
+                                                          .aiCorrect ==
+                                                      true
+                                              ? AppTheme.green
+                                              : AppTheme.greyTicket,
                                           borderRadius:
-                                              BorderRadius.circular(100.r)),
+                                              BorderRadius.circular(3.r)),
                                       alignment: Alignment.center,
-                                      child: const CustomText(
-                                        text: 'vs',
-                                        textColor: AppTheme.white,
+                                      child: Row(
+                                        children: [
+                                          CustomText(
+                                            text: finishController
+                                                .finishList[index].homeGoals,
+                                            textColor: finishController
+                                                            .finishList[index]
+                                                            .hasAi ==
+                                                        true &&
+                                                    finishController
+                                                            .finishList[index]
+                                                            .aiCorrect ==
+                                                        true
+                                                ? AppTheme.white
+                                                : AppTheme.black,
+                                          ),
+                                          const CustomText(
+                                            text: ' - ',
+                                            textColor: AppTheme.white,
+                                          ),
+                                          CustomText(
+                                            text: finishController
+                                                .finishList[index].awayGoals,
+                                            textColor: finishController
+                                                            .finishList[index]
+                                                            .hasAi ==
+                                                        true &&
+                                                    finishController
+                                                            .finishList[index]
+                                                            .aiCorrect ==
+                                                        true
+                                                ? AppTheme.white
+                                                : AppTheme.black,
+                                          ),
+                                        ],
                                       ),
                                     ),
                                     SizedBox(

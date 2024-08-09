@@ -40,7 +40,7 @@ class Home extends StatelessWidget {
             items: [
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.abc,
+                  Icons.view_timeline_outlined,
                   size: 15.sp,
                 ),
                 label: 'upcoming'.tr,
@@ -48,7 +48,7 @@ class Home extends StatelessWidget {
               ),
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.ac_unit,
+                  Icons.rule,
                   size: 15.sp,
                 ),
                 label: 'finished'.tr,

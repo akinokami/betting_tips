@@ -91,9 +91,9 @@ class ApiUtils {
       throw NoInternetException();
     }
 
-    _dio.options.headers['Cookie'] =
-        'connect.sid=s%3AtrZL7FDGWlORU0LZYvuLtOabNwcudlfC.IpmcxAd4KyKMUMF8llRdWV5EB3%2FqqGz6YvAxb81zRKE';
-    print(await box.read('cookies'));
+    // _dio.options.headers['Cookie'] =
+    //     'connect.sid=s%3AtrZL7FDGWlORU0LZYvuLtOabNwcudlfC.IpmcxAd4KyKMUMF8llRdWV5EB3%2FqqGz6YvAxb81zRKE';
+    //   print(await box.read('cookies'));
 
     try {
       final Response response = await _dio.post(
