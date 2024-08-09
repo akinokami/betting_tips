@@ -1,4 +1,4 @@
-class MatchModel {
+class MResultModel {
   dynamic id;
   bool? isDatePlaceholder;
   int? count;
@@ -13,24 +13,27 @@ class MatchModel {
   String? date;
   String? homeTeam;
   String? awayTeam;
+  String? homeGoals;
+  String? awayGoals;
   String? league;
   String? time;
   String? status;
+  bool? subscribed;
+  String? gameOutcome;
   num? aiHome;
   num? aiAway;
   num? aiDraw;
   String? prediction;
   String? aiMsg;
   bool? risky;
-  String? aiAwayColor;
-  String? aiDrawColor;
-  String? aiHomeColor;
+  bool? aiCorrect;
+  String? color;
   bool? hasAi;
-  bool? subscribed;
+  String? currentDate;
   bool? hideBuyMsg;
   String? buyMsg;
 
-  MatchModel(
+  MResultModel(
       {this.id,
       this.isDatePlaceholder,
       this.count,
@@ -45,25 +48,28 @@ class MatchModel {
       this.date,
       this.homeTeam,
       this.awayTeam,
+      this.homeGoals,
+      this.awayGoals,
       this.league,
       this.time,
       this.status,
+      this.subscribed,
+      this.gameOutcome,
       this.aiHome,
       this.aiAway,
       this.aiDraw,
       this.prediction,
       this.aiMsg,
       this.risky,
-      this.aiAwayColor,
-      this.aiDrawColor,
-      this.aiHomeColor,
+      this.aiCorrect,
+      this.color,
       this.hasAi,
-      this.subscribed,
+      this.currentDate,
       this.hideBuyMsg,
       this.buyMsg});
 
-  MatchModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'].toString();
+  MResultModel.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
     isDatePlaceholder = json['isDatePlaceholder'];
     count = json['count'];
     justDate = json['justDate'];
@@ -77,20 +83,23 @@ class MatchModel {
     date = json['date'];
     homeTeam = json['HomeTeam'];
     awayTeam = json['AwayTeam'];
+    homeGoals = json['HomeGoals'];
+    awayGoals = json['AwayGoals'];
     league = json['League'];
     time = json['Time'];
     status = json['Status'];
+    subscribed = json['subscribed'];
+    gameOutcome = json['gameOutcome'];
     aiHome = json['AiHome'];
     aiAway = json['AiAway'];
     aiDraw = json['AiDraw'];
     prediction = json['prediction'];
     aiMsg = json['aiMsg'];
     risky = json['risky'];
-    aiAwayColor = json['AiAwayColor'];
-    aiDrawColor = json['AiDrawColor'];
-    aiHomeColor = json['AiHomeColor'];
+    aiCorrect = json['AiCorrect'];
+    color = json['color'];
     hasAi = json['hasAi'];
-    subscribed = json['subscribed'];
+    currentDate = json['currentDate'];
     hideBuyMsg = json['hideBuyMsg'];
     buyMsg = json['buyMsg'];
   }
@@ -101,7 +110,7 @@ class MatchModel {
     data['isDatePlaceholder'] = isDatePlaceholder;
     data['count'] = count;
     data['justDate'] = justDate;
-    // data['search'] = search;
+    data['search'] = search;
     data['isLeaguePlaceholder'] = isLeaguePlaceholder;
     data['LeagueName'] = leagueName;
     data['LeagueId'] = leagueId;
@@ -111,20 +120,23 @@ class MatchModel {
     data['date'] = date;
     data['HomeTeam'] = homeTeam;
     data['AwayTeam'] = awayTeam;
+    data['HomeGoals'] = homeGoals;
+    data['AwayGoals'] = awayGoals;
     data['League'] = league;
     data['Time'] = time;
     data['Status'] = status;
+    data['subscribed'] = subscribed;
+    data['gameOutcome'] = gameOutcome;
     data['AiHome'] = aiHome;
     data['AiAway'] = aiAway;
     data['AiDraw'] = aiDraw;
     data['prediction'] = prediction;
     data['aiMsg'] = aiMsg;
     data['risky'] = risky;
-    data['AiAwayColor'] = aiAwayColor;
-    data['AiDrawColor'] = aiDrawColor;
-    data['AiHomeColor'] = aiHomeColor;
+    data['AiCorrect'] = aiCorrect;
+    data['color'] = color;
     data['hasAi'] = hasAi;
-    data['subscribed'] = subscribed;
+    data['currentDate'] = currentDate;
     data['hideBuyMsg'] = hideBuyMsg;
     data['buyMsg'] = buyMsg;
     return data;

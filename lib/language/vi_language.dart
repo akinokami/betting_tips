@@ -53,5 +53,9 @@ class ViLanguage {
     'live': 'Sống',
     'scores': 'Điểm số',
     'football_betting_tips': 'Football Betting Tips',
+    'upcoming': 'Sắp tới',
+    'finished': 'Hoàn thành',
+    'upcoming_tips': 'Mẹo sắp tới',
+    'finished_tips': 'Mẹo đã hoàn thành',
   };
 }

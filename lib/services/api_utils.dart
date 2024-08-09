@@ -17,14 +17,13 @@ class ApiUtils {
     _dio.options.connectTimeout = const Duration(seconds: 20);
     _dio.options.receiveTimeout = const Duration(seconds: 20);
     _dio.options.sendTimeout = const Duration(seconds: 20);
-    _dio.options.headers['Content-Type'] = 'application/json';
+    _dio.options.headers['Content-Type'] = 'application/json;';
     _dio.options.headers['Accept'] = '*/*';
 
     String cookies = box.read('cookies') ?? '';
-    print(cookies);
-
-    // String? token = MyShare.getToken();
-    // _dio.options.headers['Authorization'] = 'Bearer $token';
+    if (box.read('cookies') != null) {
+      _dio.options.headers['Cookie'] = cookies;
+    }
   }
 
   void setCookies(String cookies) {
@@ -91,6 +90,11 @@ class ApiUtils {
     if (connectivityResult == ConnectivityResult.none) {
       throw NoInternetException();
     }
+
+    _dio.options.headers['Cookie'] =
+        'connect.sid=s%3AtrZL7FDGWlORU0LZYvuLtOabNwcudlfC.IpmcxAd4KyKMUMF8llRdWV5EB3%2FqqGz6YvAxb81zRKE';
+    print(await box.read('cookies'));
+
     try {
       final Response response = await _dio.post(
         url,
@@ -98,9 +102,10 @@ class ApiUtils {
         queryParameters: queryParameters,
         options: options,
       );
-      if (response.data['success'] == false) {
-        throw CustomException(response.data['message']);
-      }
+      // if (response.statusCode != 200) {
+      //   throw CustomException(response.data['message']);
+      // }
+      print("resp>>>>>>$response");
       return response;
     } on DioException catch (dioError) {
       if (dioError.type == DioExceptionType.cancel) {
@@ -147,7 +152,7 @@ class ApiUtils {
         queryParameters: queryParameters,
         options: options,
       );
-      if (response.data['success'] == false) {
+      if (response.statusCode != 200) {
         throw CustomException(response.data['message']);
       }
       return response;

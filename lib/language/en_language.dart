@@ -92,5 +92,9 @@ class EnLanguage {
     'live': 'Live',
     'scores': 'Scores',
     'football_betting_tips': 'Football Betting Tips',
+    'upcoming': 'Upcoming',
+    'finished': 'Finished',
+    'upcoming_tips': 'Upcoming Tips',
+    'finished_tips': 'Finished Tips',
   };
 }
