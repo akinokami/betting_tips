@@ -23,13 +23,14 @@ class LiveScreen extends StatelessWidget {
           ),
         ),
         body: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: EdgeInsets.all(10.w),
           child: Column(
             children: [
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CustomCard(
-                    width: 1.sw * 0.45,
+                    width: 1.sw * 0.43,
                     height: 1.sh * 0.20,
                     widget: Column(
                       mainAxisAlignment: MainAxisAlignment.center,

@@ -90,6 +90,7 @@ class EnLanguage {
     'description':
         'Some channels may take a while to load as they have high quality streams. Please be patient.',
     'live': 'Live',
-    'scores': 'Scores'
+    'scores': 'Scores',
+    'football_betting_tips': 'Football Betting Tips',
   };
 }

@@ -1,4 +1,5 @@
 import 'package:betting_tips/language/languages.dart';
+import 'package:betting_tips/views/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
                   ? const Locale('vi', 'VN')
                   : const Locale('en', 'US'),
           fallbackLocale: const Locale('en', 'US'),
-          home: Home(),
+          home: const SplashScreen(),
           debugShowCheckedModeBanner: false,
         );
       },

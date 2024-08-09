@@ -3,6 +3,7 @@ import 'package:betting_tips/views/screens/setting/setting_screen.dart';
 import 'package:betting_tips/views/screens/tips/tips_screen.dart';
 import 'package:betting_tips/views/screens/live/live_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../utils/app_theme.dart';
@@ -13,17 +14,19 @@ class Home extends StatelessWidget {
   final TextStyle unselectedLabelStyle = TextStyle(
       color: Colors.white.withOpacity(0.5),
       fontWeight: FontWeight.w500,
-      fontSize: 12);
+      fontSize: 10.sp);
 
-  final TextStyle selectedLabelStyle = const TextStyle(
-      color: Colors.white, fontWeight: FontWeight.w500, fontSize: 12);
+  final TextStyle selectedLabelStyle = TextStyle(
+      color: Colors.white, fontWeight: FontWeight.w500, fontSize: 10.sp);
 
   buildBottomNavigationMenu(context, landingPageController) {
     return Obx(() => MediaQuery(
         data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
         child: SizedBox(
-          height: 60,
+          height: 56.h,
           child: BottomNavigationBar(
+            selectedFontSize: 10.sp,
+            unselectedFontSize: 10.sp,
             showUnselectedLabels: true,
             showSelectedLabels: true,
             onTap: landingPageController.changeTabIndex,
@@ -35,36 +38,27 @@ class Home extends StatelessWidget {
             selectedLabelStyle: selectedLabelStyle,
             items: [
               BottomNavigationBarItem(
-                icon: Container(
-                  margin: const EdgeInsets.only(bottom: 7),
-                  child: const Icon(
-                    Icons.home,
-                    size: 20.0,
-                  ),
+                icon: Icon(
+                  Icons.home,
+                  size: 15.sp,
                 ),
-                label: 'Tips',
+                label: 'tips'.tr,
                 backgroundColor: AppTheme.white,
               ),
               BottomNavigationBarItem(
-                icon: Container(
-                  margin: const EdgeInsets.only(bottom: 7),
-                  child: const Icon(
-                    Icons.calendar_month,
-                    size: 20.0,
-                  ),
+                icon: Icon(
+                  Icons.calendar_month,
+                  size: 15.sp,
                 ),
-                label: 'Live',
+                label: 'live'.tr,
                 backgroundColor: AppTheme.white,
               ),
               BottomNavigationBarItem(
-                icon: Container(
-                  margin: const EdgeInsets.only(bottom: 7),
-                  child: const Icon(
-                    Icons.settings,
-                    size: 20.0,
-                  ),
+                icon: Icon(
+                  Icons.settings,
+                  size: 15.sp,
                 ),
-                label: 'Settings',
+                label: 'settings'.tr,
                 backgroundColor: AppTheme.white,
               ),
             ],

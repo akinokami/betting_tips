@@ -2,9 +2,11 @@ import 'package:betting_tips/services/api_constant.dart';
 import 'package:betting_tips/utils/custom_exception.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
+import 'package:get_storage/get_storage.dart';
 
 class ApiUtils {
   final _dio = Dio();
+  final box = GetStorage();
 
   static final ApiUtils singleton = ApiUtils._();
   factory ApiUtils() => singleton;
@@ -18,8 +20,15 @@ class ApiUtils {
     _dio.options.headers['Content-Type'] = 'application/json';
     _dio.options.headers['Accept'] = '*/*';
 
+    String cookies = box.read('cookies') ?? '';
+    print(cookies);
+
     // String? token = MyShare.getToken();
     // _dio.options.headers['Authorization'] = 'Bearer $token';
+  }
+
+  void setCookies(String cookies) {
+    _dio.options.headers['Cookie'] = cookies;
   }
 
   // void updateToken(String token) {

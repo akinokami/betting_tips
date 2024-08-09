@@ -51,6 +51,7 @@ class ViLanguage {
     'trophies': 'Cúp',
     'club_records': 'Hồ sơ câu lạc bộ',
     'live': 'Sống',
-    'scores': 'Điểm số'
+    'scores': 'Điểm số',
+    'football_betting_tips': 'Football Betting Tips',
   };
 }

@@ -38,7 +38,7 @@ class _TipsScreenState extends State<TipsScreen> {
                   builder: (context, StateSetter setState) {
                     return AlertDialog(
                       content: SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.80,
+                        height: 1.sh * 0.80,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -94,7 +94,7 @@ class _TipsScreenState extends State<TipsScreen> {
                                 ),
                                 CustomText(
                                   text: 'agree'.tr,
-                                  size: 12.sp,
+                                  size: 12,
                                 ),
                               ],
                             ),
@@ -108,7 +108,7 @@ class _TipsScreenState extends State<TipsScreen> {
                               // ignore: sort_child_properties_last
                               child: CustomText(
                                 text: 'accept'.tr,
-                                size: 12.sp,
+                                size: 12,
                               ),
                               onPressed: isAccepted
                                   ? () async {
@@ -147,81 +147,84 @@ class _TipsScreenState extends State<TipsScreen> {
           fontWeight: FontWeight.w500,
         ),
       ),
-      body: Column(
-        children: [
-          Row(
-            children: [
-              Expanded(
-                child: CustomCard(
-                  widget: Row(
-                    children: [
-                      Icon(
-                        Icons.sports_football,
-                        size: 18.sp,
-                      ),
-                      SizedBox(
-                        width: 10.w,
-                      ),
-                      CustomText(text: 'Football')
-                    ],
+      body: Padding(
+        padding: EdgeInsets.all(10.w),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: CustomCard(
+                    widget: Row(
+                      children: [
+                        Icon(
+                          Icons.sports_football,
+                          size: 18.sp,
+                        ),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        CustomText(text: 'Football')
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: CustomCard(
-                  widget: Row(
-                    children: [
-                      Icon(
-                        Icons.sports_football,
-                        size: 18.sp,
-                      ),
-                      SizedBox(
-                        width: 10.w,
-                      ),
-                      CustomText(text: 'Football')
-                    ],
+                Expanded(
+                  child: CustomCard(
+                    widget: Row(
+                      children: [
+                        Icon(
+                          Icons.sports_football,
+                          size: 18.sp,
+                        ),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        CustomText(text: 'Football')
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: CustomCard(
+                    widget: Row(
+                      children: [
+                        Icon(
+                          Icons.sports_football,
+                          size: 18.sp,
+                        ),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        CustomText(text: 'Football')
+                      ],
+                    ),
                   ),
                 ),
-              )
-            ],
-          ),
-          Row(
-            children: [
-              Expanded(
-                child: CustomCard(
-                  widget: Row(
-                    children: [
-                      Icon(
-                        Icons.sports_football,
-                        size: 18.sp,
-                      ),
-                      SizedBox(
-                        width: 10.w,
-                      ),
-                      CustomText(text: 'Football')
-                    ],
+                Expanded(
+                  child: CustomCard(
+                    widget: Row(
+                      children: [
+                        Icon(
+                          Icons.sports_football,
+                          size: 18.sp,
+                        ),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        CustomText(text: 'Football')
+                      ],
+                    ),
                   ),
-                ),
-              ),
-              Expanded(
-                child: CustomCard(
-                  widget: Row(
-                    children: [
-                      Icon(
-                        Icons.sports_football,
-                        size: 18.sp,
-                      ),
-                      SizedBox(
-                        width: 10.w,
-                      ),
-                      CustomText(text: 'Football')
-                    ],
-                  ),
-                ),
-              )
-            ],
-          ),
-        ],
+                )
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
