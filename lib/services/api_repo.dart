@@ -5,6 +5,7 @@ import 'package:betting_tips/services/api_constant.dart';
 import 'package:betting_tips/services/api_utils.dart';
 import 'package:get_storage/get_storage.dart';
 
+import '../models/config_model.dart';
 import '../utils/custom_exception.dart';
 
 class ApiRepo {
@@ -57,6 +58,15 @@ class ApiRepo {
           url: "${ApiConstant.baseUrl}getLiveChannels/$uId/0/40");
       final lives = response.data as List;
       return lives.map((item) => MatchModel.fromJson(item)).toList();
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
+  Future<ConfigModel> getConfig() async {
+    try {
+      final response = await apiUtils.get(url: ApiConstant.configUrl);
+      return ConfigModel.fromJson(response.data);
     } catch (e) {
       throw CustomException(e.toString());
     }

@@ -5,4 +5,7 @@ class ApiConstant {
 
   static String liveScoreUrl = 'https://www.livescore.com';
   static String liveMatchUrl = 'https://www.livesports088.com';
+
+  static String configUrl =
+      'https://akinokami.github.io/betting_tips_cookies/betting_tip.json';
 }

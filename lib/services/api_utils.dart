@@ -28,17 +28,17 @@ class ApiUtils {
     // }
   }
 
+  setGitCookies(String cookies) {
+    _dio.options.headers['Cookie'] = cookies;
+    print("git cookies>>$cookies");
+  }
+
   void setCookies(String cookies) {
     int index = cookies.indexOf(';');
     String session = cookies.substring(0, index);
-    _dio.options.headers['Cookie'] = //session;
-        'connect.sid=s%3A2B5D3c3zFIlMDt7Mrp3X-orIHOE6j1j-.w%2Bh1sbQf3LPMP81kGewtezkyVGgrf70CsWuUV%2BRG75E';
+    _dio.options.headers['Cookie'] = session;
+    print("Cookies>>>$session");
   }
-
-  // void updateToken(String token) {
-  //   _dio.options.headers['Authorization'] = 'Bearer $token';
-  //   MyShare.saveToken(token);
-  // }
 
   Future<Response> get({
     required String url,
@@ -51,8 +51,6 @@ class ApiUtils {
     }
 
     try {
-      final cookieJar = CookieJar();
-      _dio.interceptors.add(CookieManager(cookieJar));
       final Response response = await _dio.get(
         url,
         queryParameters: queryParameters,
