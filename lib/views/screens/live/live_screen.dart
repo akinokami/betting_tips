@@ -36,7 +36,7 @@ class LiveScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
-                          Icons.score_outlined,
+                          Icons.view_timeline_outlined,
                           size: 40.sp,
                           color: AppTheme.premiumColor2,
                         ),

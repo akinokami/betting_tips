@@ -25,6 +25,7 @@ class ViLanguage {
     'search': 'Tìm kiếm',
     'warning': 'Cảnh báo',
     'please_enter_text': 'Vui lòng nhập văn bản',
+    'no_data_found': 'Không tìm thấy dữ liệu.',
     'overall': 'Tổng thể',
     'standing': 'Đứng',
     'statistics': 'Số liệu thống kê',
@@ -57,5 +58,7 @@ class ViLanguage {
     'finished': 'Hoàn thành',
     'upcoming_tips': 'Mẹo sắp tới',
     'finished_tips': 'Mẹo đã hoàn thành',
+    'predition': 'Dự đoán :',
+    'no_tip_for_this_match': 'Không có mẹo cho trận đấu này.',
   };
 }

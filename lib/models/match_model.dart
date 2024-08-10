@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class MatchModel {
   dynamic id;
   bool? isDatePlaceholder;
@@ -11,6 +13,7 @@ class MatchModel {
   String? name;
   String? gameId;
   String? date;
+  String? matchTime;
   String? homeTeam;
   String? awayTeam;
   String? league;
@@ -43,6 +46,7 @@ class MatchModel {
       this.name,
       this.gameId,
       this.date,
+      this.matchTime,
       this.homeTeam,
       this.awayTeam,
       this.league,
@@ -75,6 +79,9 @@ class MatchModel {
     name = json['name'];
     gameId = json['gameId'];
     date = json['date'];
+    matchTime = json['date'] != null
+        ? DateFormat("HH:mm").format(DateTime.parse(json['date']))
+        : "";
     homeTeam = json['HomeTeam'];
     awayTeam = json['AwayTeam'];
     league = json['League'];

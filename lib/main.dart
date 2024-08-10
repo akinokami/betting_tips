@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (_, child) {
         return GetMaterialApp(
-          title: 'Betting Tips',
+          title: 'Football Betting Tips',
           theme: ThemeData(
             primarySwatch: Colors.green,
           ),

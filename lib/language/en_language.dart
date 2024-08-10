@@ -49,7 +49,7 @@ class EnLanguage {
     'trophies': 'Trophies',
     'club_records': 'Club Records',
     'channel': 'All',
-    'no_data_found': 'No Data Found',
+    'no_data_found': 'No Data Found.',
     'no_channel_found': 'No Channel Found',
     'fav': 'Favorite',
     'category': 'Category',
@@ -96,5 +96,7 @@ class EnLanguage {
     'finished': 'Finished',
     'upcoming_tips': 'Upcoming Tips',
     'finished_tips': 'Finished Tips',
+    'predition': 'Predition :',
+    'no_tip_for_this_match': 'No tip for this match.',
   };
 }
