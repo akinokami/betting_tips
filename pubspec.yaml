@@ -38,11 +38,14 @@ dependencies:
   get: ^4.6.6
   get_storage: ^2.1.1
   dio: ^5.5.0+1
+  dio_cookie_manager: ^3.1.1
   connectivity_plus: ^5.0.2
   intl: ^0.18.0
   flutter_screenutil: ^5.9.3
   cached_network_image: 
   webview_flutter: ^4.5.0
+  flutter_launcher_icons: ^0.13.1
+  cookie_jar: ^4.0.8
 
 dev_dependencies:
   flutter_test:
@@ -95,3 +98,9 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/tips.webp"
+  min_sdk_android: 21

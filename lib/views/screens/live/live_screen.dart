@@ -43,10 +43,10 @@ class LiveScreen extends StatelessWidget {
                     },
                     child: CustomCard(
                       width: 1.sw * 0.43,
-                      height: 1.sh * 0.20,
                       widget: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          SizedBox(height: 12.h),
                           Icon(
                             Icons.view_timeline_outlined,
                             size: 40.sp,
@@ -58,6 +58,7 @@ class LiveScreen extends StatelessWidget {
                           CustomText(
                             text: 'scores'.tr,
                           ),
+                          SizedBox(height: 12.h),
                         ],
                       ),
                     ),
@@ -74,6 +75,7 @@ class LiveScreen extends StatelessWidget {
                       widget: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          SizedBox(height: 12.h),
                           Icon(
                             Icons.tv,
                             size: 40.sp,
@@ -85,6 +87,7 @@ class LiveScreen extends StatelessWidget {
                           CustomText(
                             text: 'matches'.tr,
                           ),
+                          SizedBox(height: 12.h),
                         ],
                       ),
                     ),

@@ -14,13 +14,15 @@ class SplashController extends GetxController {
   void onInit() {
     super.onInit();
 
-    if (box.read('cookies') != null) {
-      Future.delayed(const Duration(seconds: 2), () {
-        Get.offAll(() => Home());
-      });
-    } else {
-      getGuestUser();
-    }
+    // if (box.read('cookies') != null) {
+    //   Future.delayed(const Duration(seconds: 2), () {
+    //     Get.offAll(() => Home());
+    //   });
+    // } else {
+    //   getGuestUser();
+    // }
+
+    getGuestUser();
   }
 
   Future<void> getGuestUser() async {

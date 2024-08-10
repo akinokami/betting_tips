@@ -21,7 +21,7 @@ class CustomCard extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       margin: EdgeInsets.all(5.w),
-      height: height ?? 50.h,
+      //  height: height ?? 50.h,
       width: width ?? double.infinity,
       padding: EdgeInsets.all(10.w),
       decoration: BoxDecoration(

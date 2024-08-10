@@ -3,6 +3,8 @@ import 'package:betting_tips/utils/custom_exception.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:cookie_jar/cookie_jar.dart';
+import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 
 class ApiUtils {
   final _dio = Dio();
@@ -14,20 +16,23 @@ class ApiUtils {
     _dio.options.baseUrl = ApiConstant.baseUrl;
     _dio.interceptors
         .add(LogInterceptor(requestBody: true, responseBody: true));
-    _dio.options.connectTimeout = const Duration(seconds: 20);
-    _dio.options.receiveTimeout = const Duration(seconds: 20);
-    _dio.options.sendTimeout = const Duration(seconds: 20);
-    _dio.options.headers['Content-Type'] = 'application/json;';
+    _dio.options.connectTimeout = const Duration(seconds: 30);
+    _dio.options.receiveTimeout = const Duration(seconds: 30);
+    _dio.options.sendTimeout = const Duration(seconds: 30);
+    _dio.options.headers['Content-Type'] = 'application/json; charset=utf-8';
     _dio.options.headers['Accept'] = '*/*';
 
-    String cookies = box.read('cookies') ?? '';
-    if (box.read('cookies') != null) {
-      _dio.options.headers['Cookie'] = cookies;
-    }
+    // String cookies = box.read('cookies') ?? '';
+    // if (box.read('cookies') != null) {
+    //   _dio.options.headers['Cookie'] = cookies;
+    // }
   }
 
   void setCookies(String cookies) {
-    _dio.options.headers['Cookie'] = cookies;
+    int index = cookies.indexOf(';');
+    String session = cookies.substring(0, index);
+    _dio.options.headers['Cookie'] = //session;
+        'connect.sid=s%3A2B5D3c3zFIlMDt7Mrp3X-orIHOE6j1j-.w%2Bh1sbQf3LPMP81kGewtezkyVGgrf70CsWuUV%2BRG75E';
   }
 
   // void updateToken(String token) {
@@ -46,11 +51,14 @@ class ApiUtils {
     }
 
     try {
+      final cookieJar = CookieJar();
+      _dio.interceptors.add(CookieManager(cookieJar));
       final Response response = await _dio.get(
         url,
         queryParameters: queryParameters,
         options: options,
       );
+
       return response;
     } on DioException catch (dioError) {
       if (dioError.type == DioExceptionType.cancel) {
@@ -90,11 +98,6 @@ class ApiUtils {
     if (connectivityResult == ConnectivityResult.none) {
       throw NoInternetException();
     }
-
-    _dio.options.headers['Cookie'] =
-        'connect.sid=s%3AaVrX7JLA2aao3X59tAw68Goo6y5Ty1HC.rqqBM%2FL6qwcSaodnAlPbLpXzHuvtS35NDswgq3B5q6E';
-    print(await box.read('cookies'));
-
     try {
       final Response response = await _dio.post(
         url,
