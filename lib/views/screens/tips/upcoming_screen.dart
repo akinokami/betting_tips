@@ -3,10 +3,10 @@ import 'package:betting_tips/utils/app_theme.dart';
 import 'package:betting_tips/views/widgets/custom_text.dart';
 import 'package:betting_tips/views/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import '../../../utils/global.dart';
 import '../../widgets/match_widget.dart';
 
@@ -45,28 +45,13 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                           children: [
                             SingleChildScrollView(
                               child: SizedBox(
-                                height: 1.sh * 0.65,
-                                width: double.infinity,
-                                child: InAppWebView(
-                                  initialData: Global.language == "vi"
-                                      ? InAppWebViewInitialData(
-                                          data: Global.policyHtmlVi)
-                                      : InAppWebViewInitialData(
-                                          data: Global.policyHtmlEn),
-                                  initialOptions: InAppWebViewGroupOptions(
-                                    android: AndroidInAppWebViewOptions(
-                                      cacheMode: AndroidCacheMode.LOAD_DEFAULT,
-                                      useHybridComposition: true,
-                                      useShouldInterceptRequest: true,
-                                    ),
-                                    crossPlatform: InAppWebViewOptions(
-                                      cacheEnabled: true,
-                                      useShouldOverrideUrlLoading: true,
-                                      javaScriptEnabled: true,
-                                    ),
-                                  ),
-                                ),
-                              ),
+                                  height: 1.sh * 0.65,
+                                  width: double.infinity,
+                                  child: WebViewWidget(
+                                      controller: WebViewController()
+                                        ..loadHtmlString(Global.language == "vi"
+                                            ? Global.policyHtmlVi
+                                            : Global.policyHtmlEn))),
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,

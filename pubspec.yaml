@@ -41,8 +41,8 @@ dependencies:
   connectivity_plus: ^5.0.2
   intl: ^0.18.0
   flutter_screenutil: ^5.9.3
-  flutter_inappwebview: ^5.8.0
   cached_network_image: 
+  webview_flutter: ^4.5.0
 
 dev_dependencies:
   flutter_test:

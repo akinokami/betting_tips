@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           title: 'Football Betting Tips',
           theme: ThemeData(
-            primarySwatch: Colors.green,
+            primarySwatch: Colors.grey,
           ),
           translations: Languages(),
           locale: Global.language == 'zh'
