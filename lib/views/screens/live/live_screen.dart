@@ -1,3 +1,4 @@
+import 'package:betting_tips/controller/live_controller.dart';
 import 'package:betting_tips/services/api_constant.dart';
 import 'package:betting_tips/utils/app_theme.dart';
 import 'package:betting_tips/views/screens/live/webview_screen.dart';
@@ -7,12 +8,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../widgets/custom_text.dart';
+import '../../widgets/match_widget.dart';
 
 class LiveScreen extends StatelessWidget {
   const LiveScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final liveController = Get.put(LiveController());
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
@@ -27,6 +30,7 @@ class LiveScreen extends StatelessWidget {
         body: Padding(
           padding: EdgeInsets.all(10.w),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -86,7 +90,40 @@ class LiveScreen extends StatelessWidget {
                     ),
                   ),
                 ],
-              )
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              CustomText(
+                text: 'Live tips',
+                size: 15.sp,
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              Expanded(
+                child: Obx(
+                  () => liveController.isLoading.value
+                      ? const Center(
+                          child: CircularProgressIndicator(
+                            color: AppTheme.premiumColor2,
+                          ),
+                        )
+                      : liveController.liveList.isNotEmpty
+                          ? ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: liveController.liveList.length,
+                              itemBuilder: (context, index) {
+                                return MatchWidget(
+                                  matchModel: liveController.liveList[index],
+                                );
+                              })
+                          : Center(
+                              child: CustomText(
+                              text: 'no_data_found'.tr,
+                            )),
+                ),
+              ),
             ],
           ),
         ));

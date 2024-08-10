@@ -44,9 +44,19 @@ class ApiRepo {
     try {
       final response =
           await apiUtils.post(url: "${ApiConstant.baseUrl}finished");
-      print("response >>>>>$response");
       final matches = response.data as List;
       return matches.map((item) => MResultModel.fromJson(item)).toList();
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
+  Future<List<MatchModel>> getLiveList(String uId) async {
+    try {
+      final response = await apiUtils.post(
+          url: "${ApiConstant.baseUrl}getLiveChannels/$uId/0/40");
+      final lives = response.data as List;
+      return lives.map((item) => MatchModel.fromJson(item)).toList();
     } catch (e) {
       throw CustomException(e.toString());
     }

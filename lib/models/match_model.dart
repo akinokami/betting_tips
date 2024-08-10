@@ -16,6 +16,8 @@ class MatchModel {
   String? matchTime;
   String? homeTeam;
   String? awayTeam;
+  String? homeGoals;
+  String? awayGoals;
   String? league;
   String? time;
   String? status;
@@ -24,7 +26,7 @@ class MatchModel {
   num? aiDraw;
   String? prediction;
   String? aiMsg;
-  bool? risky;
+  // bool? risky;
   String? aiAwayColor;
   String? aiDrawColor;
   String? aiHomeColor;
@@ -49,6 +51,8 @@ class MatchModel {
       this.matchTime,
       this.homeTeam,
       this.awayTeam,
+      this.homeGoals,
+      this.awayGoals,
       this.league,
       this.time,
       this.status,
@@ -57,7 +61,7 @@ class MatchModel {
       this.aiDraw,
       this.prediction,
       this.aiMsg,
-      this.risky,
+      // this.risky,
       this.aiAwayColor,
       this.aiDrawColor,
       this.aiHomeColor,
@@ -84,6 +88,8 @@ class MatchModel {
         : "";
     homeTeam = json['HomeTeam'];
     awayTeam = json['AwayTeam'];
+    homeGoals = json['HomeGoals'];
+    awayGoals = json['AwayGoals'];
     league = json['League'];
     time = json['Time'];
     status = json['Status'];
@@ -92,7 +98,7 @@ class MatchModel {
     aiDraw = json['AiDraw'];
     prediction = json['prediction'];
     aiMsg = json['aiMsg'];
-    risky = json['risky'];
+    //risky = json['risky'];
     aiAwayColor = json['AiAwayColor'];
     aiDrawColor = json['AiDrawColor'];
     aiHomeColor = json['AiHomeColor'];
@@ -126,7 +132,7 @@ class MatchModel {
     data['AiDraw'] = aiDraw;
     data['prediction'] = prediction;
     data['aiMsg'] = aiMsg;
-    data['risky'] = risky;
+    //  data['risky'] = risky;
     data['AiAwayColor'] = aiAwayColor;
     data['AiDrawColor'] = aiDrawColor;
     data['AiHomeColor'] = aiHomeColor;

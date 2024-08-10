@@ -74,9 +74,41 @@ class MatchWidget extends StatelessWidget {
           visible: matchModel?.isDatePlaceholder != true &&
               matchModel?.isLeaguePlaceholder != true,
           child: CustomCard(
-            height: 90.h,
+            height: matchModel?.time == "Not started" ? 90.h : 110.h,
             widget: Column(
               children: [
+                Visibility(
+                  visible: matchModel?.time != "Not started",
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          CachedNetworkImage(
+                            width: 15.w,
+                            height: 15.h,
+                            imageUrl: matchModel?.img ?? '',
+                            placeholder: (context, url) =>
+                                const CircularProgressIndicator(
+                              color: AppTheme.premiumColor2,
+                            ),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
+                          ),
+                          SizedBox(
+                            width: 10.w,
+                          ),
+                          Expanded(
+                            child: CustomText(text: matchModel?.league),
+                          ),
+                          CustomText(text: matchModel?.justDate),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      )
+                    ],
+                  ),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -90,18 +122,43 @@ class MatchWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
-                      width: 20.w,
-                      height: 20.w,
-                      decoration: BoxDecoration(
-                          color: AppTheme.premiumColor2,
-                          borderRadius: BorderRadius.circular(100.r)),
-                      alignment: Alignment.center,
-                      child: const CustomText(
-                        text: 'vs',
-                        textColor: AppTheme.white,
-                      ),
-                    ),
+                    matchModel?.time == "Not started"
+                        ? Container(
+                            width: 20.w,
+                            height: 20.w,
+                            decoration: BoxDecoration(
+                                color: AppTheme.premiumColor2,
+                                borderRadius: BorderRadius.circular(100.r)),
+                            alignment: Alignment.center,
+                            child: const CustomText(
+                              text: 'vs',
+                              textColor: AppTheme.white,
+                            ),
+                          )
+                        : Container(
+                            height: 15.w,
+                            padding: EdgeInsets.only(left: 5.w, right: 5.w),
+                            decoration: BoxDecoration(
+                                color: AppTheme.greyTicket,
+                                borderRadius: BorderRadius.circular(3.r)),
+                            alignment: Alignment.center,
+                            child: Row(
+                              children: [
+                                CustomText(
+                                  text: matchModel?.homeGoals,
+                                  textColor: AppTheme.black,
+                                ),
+                                const CustomText(
+                                  text: ' - ',
+                                  textColor: AppTheme.black,
+                                ),
+                                CustomText(
+                                  text: matchModel?.awayGoals,
+                                  textColor: AppTheme.black,
+                                ),
+                              ],
+                            ),
+                          ),
                     SizedBox(
                       width: 1.sw * 0.30,
                       child: Center(
@@ -185,9 +242,13 @@ class MatchWidget extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CustomText(
-                      text: matchModel?.matchTime ?? '',
-                    ),
+                    matchModel?.time == "Not started"
+                        ? CustomText(
+                            text: matchModel?.matchTime ?? '',
+                          )
+                        : CustomText(
+                            text: matchModel?.time ?? '',
+                          ),
                     Visibility(
                       visible: matchModel?.hasAi == true,
                       child: Container(

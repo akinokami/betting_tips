@@ -9,29 +9,16 @@ import '../utils/constants.dart';
 class SplashController extends GetxController {
   final isLoading = false.obs;
   final box = GetStorage();
+
   @override
   void onInit() {
     super.onInit();
-    // Future.delayed(const Duration(seconds: 2), () {
-    //   User? user = FirebaseAuth.instance.currentUser;
 
-    //   if (user != null) {
-    //     Global.uid = user.uid;
-    //     Global.name = user.displayName ?? '';
-    //     Global.email = user.email ?? '';
-    //     Global.photo = user.photoURL ?? '';
-    //     Get.offAll(() => BottomNavigationMenu());
-    //   } else {
-    //     Get.offAll(() => const LoginScreen());
-    //   }
-    // });
     if (box.read('cookies') != null) {
-      print('notcallguestapi');
       Future.delayed(const Duration(seconds: 2), () {
         Get.offAll(() => Home());
       });
     } else {
-      print('callguestapi');
       getGuestUser();
     }
   }
@@ -39,7 +26,8 @@ class SplashController extends GetxController {
   Future<void> getGuestUser() async {
     isLoading.value = true;
     try {
-      await ApiRepo().getGuestUser();
+      final result = await ApiRepo().getGuestUser();
+      await box.write('userId', result.sId);
       Get.offAll(() => Home());
     } catch (e) {
       constants.showSnackBar(
