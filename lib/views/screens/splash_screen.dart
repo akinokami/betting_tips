@@ -11,7 +11,7 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final splashController = Get.put(SplashController());
+    Get.put(SplashController());
     return Scaffold(
       body: SizedBox(
         width: double.infinity,
