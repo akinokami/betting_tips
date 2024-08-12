@@ -111,5 +111,9 @@ class EnLanguage {
     'football': 'Football',
     'football_tips': 'Football Tips',
     'other_sports': 'Other Sports',
+    'baseball': 'Baseball',
+    'baseball_tips': 'Baseball Tips',
+    'mma': 'MMA',
+    'mma_tips': 'MMA Tips',
   };
 }

@@ -1,3 +1,4 @@
+import 'package:betting_tips/views/screens/tips/baseball/baseball_screen.dart';
 import 'package:betting_tips/views/screens/tips/basketball/basketball_screen.dart';
 import 'package:betting_tips/views/screens/tips/hockey/hockey_screen.dart';
 import 'package:betting_tips/views/screens/tips/tennis/tennis_screen.dart';
@@ -37,16 +38,23 @@ class OtherScreen extends StatelessWidget {
                     Get.to(() => const BasketballScreen());
                   },
                   child: CustomCard(
-                    widget: Row(
+                    widget: Column(
                       children: [
+                        SizedBox(
+                          height: 10.h,
+                        ),
                         Icon(
                           Icons.sports_basketball,
-                          size: 18.sp,
+                          size: 40.sp,
+                          color: AppTheme.premiumColor2,
                         ),
                         SizedBox(
-                          width: 5.w,
+                          height: 10.h,
                         ),
-                        CustomText(text: 'basketball'.tr)
+                        CustomText(text: 'basketball'.tr),
+                        SizedBox(
+                          height: 10.h,
+                        ),
                       ],
                     ),
                   ),
@@ -58,16 +66,23 @@ class OtherScreen extends StatelessWidget {
                     Get.to(() => const TennisScreen());
                   },
                   child: CustomCard(
-                    widget: Row(
+                    widget: Column(
                       children: [
+                        SizedBox(
+                          height: 10.h,
+                        ),
                         Icon(
                           Icons.sports_tennis,
-                          size: 18.sp,
+                          size: 40.sp,
+                          color: AppTheme.premiumColor2,
                         ),
                         SizedBox(
-                          width: 5.w,
+                          height: 10.h,
                         ),
-                        CustomText(text: 'tennis'.tr)
+                        CustomText(text: 'tennis'.tr),
+                        SizedBox(
+                          height: 10.h,
+                        ),
                       ],
                     ),
                   ),
@@ -83,16 +98,23 @@ class OtherScreen extends StatelessWidget {
                     Get.to(() => const HockeyScreen());
                   },
                   child: CustomCard(
-                    widget: Row(
+                    widget: Column(
                       children: [
+                        SizedBox(
+                          height: 10.h,
+                        ),
                         Icon(
                           Icons.sports_hockey,
-                          size: 18.sp,
+                          size: 40.sp,
+                          color: AppTheme.premiumColor2,
                         ),
                         SizedBox(
-                          width: 5.w,
+                          height: 10.h,
                         ),
-                        CustomText(text: 'hockey'.tr)
+                        CustomText(text: 'hockey'.tr),
+                        SizedBox(
+                          height: 10.h,
+                        ),
                       ],
                     ),
                   ),
@@ -104,16 +126,83 @@ class OtherScreen extends StatelessWidget {
                     Get.to(() => const VolleyballScreen());
                   },
                   child: CustomCard(
-                    widget: Row(
+                    widget: Column(
                       children: [
+                        SizedBox(
+                          height: 10.h,
+                        ),
                         Icon(
                           Icons.sports_volleyball,
-                          size: 18.sp,
+                          size: 40.sp,
+                          color: AppTheme.premiumColor2,
                         ),
                         SizedBox(
-                          width: 5.w,
+                          height: 10.h,
                         ),
-                        CustomText(text: 'volleyball'.tr)
+                        CustomText(text: 'volleyball'.tr),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: GestureDetector(
+                  onTap: () {
+                    Get.to(() => const BaseballScreen());
+                  },
+                  child: CustomCard(
+                    widget: Column(
+                      children: [
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        Icon(
+                          Icons.sports_baseball,
+                          size: 40.sp,
+                          color: AppTheme.premiumColor2,
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        CustomText(text: 'baseball'.tr),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: GestureDetector(
+                  onTap: () {
+                    Get.to(() => const VolleyballScreen());
+                  },
+                  child: CustomCard(
+                    widget: Column(
+                      children: [
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        Icon(
+                          Icons.sports_mma,
+                          size: 40.sp,
+                          color: AppTheme.premiumColor2,
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        CustomText(text: 'mma'.tr),
+                        SizedBox(
+                          height: 10.h,
+                        ),
                       ],
                     ),
                   ),

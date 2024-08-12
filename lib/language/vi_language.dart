@@ -73,5 +73,9 @@ class ViLanguage {
     'football': 'Bóng đá',
     'football_tips': 'Mẹo bóng đá',
     'other_sports': 'Các môn thể thao khác',
+    'baseball': 'Bóng chày',
+    'baseball_tips': 'Mẹo bóng chày',
+    'mma': 'MMA',
+    'mma_tips': 'Mẹo MMA',
   };
 }

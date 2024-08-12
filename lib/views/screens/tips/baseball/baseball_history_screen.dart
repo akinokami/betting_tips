@@ -1,4 +1,4 @@
-import 'package:betting_tips/controller/volleyball_history_controller.dart';
+import 'package:betting_tips/controller/baseball_history_controller.dart';
 import 'package:betting_tips/models/sport_date.dart';
 import 'package:betting_tips/utils/app_theme.dart';
 import 'package:betting_tips/views/widgets/custom_text.dart';
@@ -9,15 +9,15 @@ import 'package:get/get.dart';
 import '../../../widgets/custom_text_form_field.dart';
 import '../../../widgets/other_match_widget.dart';
 
-class VolleyballHistoryScreen extends StatelessWidget {
-  const VolleyballHistoryScreen({super.key});
+class BaseballHistoryScreen extends StatelessWidget {
+  const BaseballHistoryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final volleyHistoryController = Get.put(VolleyballHistoryController());
+    final baseballHistoryController = Get.put(BaseballHistoryController());
     return Scaffold(
         body: Obx(
-      () => volleyHistoryController.isLoading.value
+      () => baseballHistoryController.isLoading.value
           ? const Center(
               child: CircularProgressIndicator(
                 color: AppTheme.premiumColor2,
@@ -41,7 +41,7 @@ class VolleyballHistoryScreen extends StatelessWidget {
                             iconEnabledColor: Colors.black,
                             // icon: const Icon(Icons.arrow_drop_down_circle),
                             padding: EdgeInsets.only(left: 8.w, right: 8.w),
-                            value: volleyHistoryController.selectedDate.value,
+                            value: baseballHistoryController.selectedDate.value,
                             hint: CustomText(
                               text: 'select_date'.tr,
                               textColor: Colors.black,
@@ -50,7 +50,7 @@ class VolleyballHistoryScreen extends StatelessWidget {
                             style: const TextStyle(
                               color: Colors.black,
                             ),
-                            items: volleyHistoryController.dateList
+                            items: baseballHistoryController.dateList
                                 .map<DropdownMenuItem<SportDate>>(
                                     (SportDate? value) {
                               return DropdownMenuItem<SportDate>(
@@ -65,12 +65,12 @@ class VolleyballHistoryScreen extends StatelessWidget {
                               );
                             }).toList(),
                             onChanged: (SportDate? newValue) {
-                              volleyHistoryController.selectedDate.value =
+                              baseballHistoryController.selectedDate.value =
                                   newValue;
-                              volleyHistoryController
+                              baseballHistoryController
                                   .getHistoryList(newValue?.macDate ?? '');
-                              volleyHistoryController.searchTxtController.text =
-                                  '';
+                              baseballHistoryController
+                                  .searchTxtController.text = '';
                             },
                           )),
                     ),
@@ -79,35 +79,35 @@ class VolleyballHistoryScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(10.w),
                   child: CustomTextFormField(
-                    controller: volleyHistoryController.searchTxtController,
+                    controller: baseballHistoryController.searchTxtController,
                     hintText: 'search'.tr,
                     isValidate: false,
                     onChange: (value) {
-                      volleyHistoryController.searchVolleyList(value);
+                      baseballHistoryController.searchBaseballList(value);
                     },
                   ),
                 ),
                 Expanded(
                   child: Obx(
-                    () => volleyHistoryController.isLoading1.value
+                    () => baseballHistoryController.isLoading1.value
                         ? const Center(
                             child: CircularProgressIndicator(
                               color: AppTheme.premiumColor2,
                             ),
                           )
-                        : volleyHistoryController
+                        : baseballHistoryController
                                 .searchTxtController.text.isNotEmpty
-                            ? volleyHistoryController.searchList.isNotEmpty
+                            ? baseballHistoryController.searchList.isNotEmpty
                                 ? ListView.builder(
                                     shrinkWrap: true,
-                                    itemCount: volleyHistoryController
+                                    itemCount: baseballHistoryController
                                         .searchList.length,
                                     physics:
                                         const NeverScrollableScrollPhysics(),
                                     itemBuilder: (context, index) {
                                       return OtherMatchWidget(
-                                        type: 'volleyball',
-                                        matchModel: volleyHistoryController
+                                        type: 'baseball',
+                                        matchModel: baseballHistoryController
                                             .searchList[index],
                                       );
                                     })
@@ -115,10 +115,10 @@ class VolleyballHistoryScreen extends StatelessWidget {
                                     child: CustomText(
                                     text: 'no_data_found'.tr,
                                   ))
-                            : volleyHistoryController.groupList.isNotEmpty
+                            : baseballHistoryController.groupList.isNotEmpty
                                 ? ListView.builder(
                                     shrinkWrap: true,
-                                    itemCount: volleyHistoryController
+                                    itemCount: baseballHistoryController
                                         .groupList.length,
                                     itemBuilder: (context, index) {
                                       return Column(
@@ -133,7 +133,7 @@ class VolleyballHistoryScreen extends StatelessWidget {
                                                 ),
                                                 CustomText(
                                                     text:
-                                                        volleyHistoryController
+                                                        baseballHistoryController
                                                                 .groupList[
                                                                     index]
                                                                 .name ??
@@ -146,17 +146,18 @@ class VolleyballHistoryScreen extends StatelessWidget {
                                           ),
                                           ListView.builder(
                                               shrinkWrap: true,
-                                              itemCount: volleyHistoryController
-                                                  .groupList[index]
-                                                  .otherList
-                                                  ?.length,
+                                              itemCount:
+                                                  baseballHistoryController
+                                                      .groupList[index]
+                                                      .otherList
+                                                      ?.length,
                                               physics:
                                                   const NeverScrollableScrollPhysics(),
                                               itemBuilder: (context, index1) {
                                                 return OtherMatchWidget(
-                                                  type: 'volleyball',
+                                                  type: 'baseball',
                                                   matchModel:
-                                                      volleyHistoryController
+                                                      baseballHistoryController
                                                           .groupList[index]
                                                           .otherList?[index1],
                                                 );

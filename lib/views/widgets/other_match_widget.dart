@@ -64,7 +64,10 @@ class OtherMatchWidget extends StatelessWidget {
                 height: 10.h,
               ),
               Visibility(
-                visible: type == 'basketball' || type == 'tennis',
+                visible: type == 'basketball' ||
+                    type == 'tennis' ||
+                    type == 'volleyball' ||
+                    type == 'baseball',
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -98,67 +101,70 @@ class OtherMatchWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //   crossAxisAlignment: CrossAxisAlignment.center,
-              //   children: [
-              //     SizedBox(
-              //       width: 1.sw * 0.30,
-              //       child: Center(
-              //         child: CustomText(
-              //           text: "${matchModel?.aiHome ?? ''} %",
-              //           textColor: (matchModel?.aiHome ?? 0) >
-              //                       (matchModel?.aiDraw ?? 0) &&
-              //                   (matchModel?.aiHome ?? 0) >
-              //                       (matchModel?.aiAway ?? 0)
-              //               ? AppTheme.green
-              //               : (matchModel?.aiHome ?? 0) <
-              //                           (matchModel?.aiDraw ?? 0) &&
-              //                       (matchModel?.aiHome ?? 0) <
-              //                           (matchModel?.aiAway ?? 0)
-              //                   ? AppTheme.red
-              //                   : Colors.orange,
-              //           fontWeight: FontWeight.w500,
-              //         ),
-              //       ),
-              //     ),
-              //     CustomText(
-              //       text: "${matchModel?.aiDraw ?? ''} %",
-              //       textColor:
-              //           (matchModel?.aiDraw ?? 0) > (matchModel?.aiHome ?? 0) &&
-              //                   (matchModel?.aiDraw ?? 0) >
-              //                       (matchModel?.aiAway ?? 0)
-              //               ? AppTheme.green
-              //               : (matchModel?.aiDraw ?? 0) <
-              //                           (matchModel?.aiHome ?? 0) &&
-              //                       (matchModel?.aiDraw ?? 0) <
-              //                           (matchModel?.aiAway ?? 0)
-              //                   ? AppTheme.red
-              //                   : Colors.orange,
-              //       fontWeight: FontWeight.w500,
-              //     ),
-              //     SizedBox(
-              //       width: 1.sw * 0.30,
-              //       child: Center(
-              //         child: CustomText(
-              //           text: "${matchModel?.aiAway ?? ''} %",
-              //           textColor: (matchModel?.aiAway ?? 0) >
-              //                       (matchModel?.aiHome ?? 0) &&
-              //                   (matchModel?.aiAway ?? 0) >
-              //                       (matchModel?.aiDraw ?? 0)
-              //               ? AppTheme.green
-              //               : (matchModel?.aiAway ?? 0) <
-              //                           (matchModel?.aiHome ?? 0) &&
-              //                       (matchModel?.aiAway ?? 0) <
-              //                           (matchModel?.aiDraw ?? 0)
-              //                   ? AppTheme.red
-              //                   : Colors.orange,
-              //           fontWeight: FontWeight.w500,
-              //         ),
-              //       ),
-              //     ),
-              //   ],
-              // ),
+              Visibility(
+                visible: type == 'hockey',
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 1.sw * 0.30,
+                      child: Center(
+                        child: CustomText(
+                          text: "${matchModel?.mac1y ?? ''} %",
+                          textColor: (matchModel?.mac1y ?? 0) >
+                                      (matchModel?.macxy ?? 0) &&
+                                  (matchModel?.mac1y ?? 0) >
+                                      (matchModel?.macxy ?? 0)
+                              ? AppTheme.green
+                              : (matchModel?.mac1y ?? 0) <
+                                          (matchModel?.macxy ?? 0) &&
+                                      (matchModel?.mac1y ?? 0) <
+                                          (matchModel?.mac2y ?? 0)
+                                  ? AppTheme.red
+                                  : Colors.orange,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    CustomText(
+                      text: "${matchModel?.macxy ?? ''} %",
+                      textColor:
+                          (matchModel?.macxy ?? 0) > (matchModel?.mac1y ?? 0) &&
+                                  (matchModel?.macxy ?? 0) >
+                                      (matchModel?.mac2y ?? 0)
+                              ? AppTheme.green
+                              : (matchModel?.macxy ?? 0) <
+                                          (matchModel?.mac1y ?? 0) &&
+                                      (matchModel?.macxy ?? 0) <
+                                          (matchModel?.mac2y ?? 0)
+                                  ? AppTheme.red
+                                  : Colors.orange,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    SizedBox(
+                      width: 1.sw * 0.30,
+                      child: Center(
+                        child: CustomText(
+                          text: "${matchModel?.mac2y ?? ''} %",
+                          textColor: (matchModel?.mac2y ?? 0) >
+                                      (matchModel?.mac1y ?? 0) &&
+                                  (matchModel?.mac2y ?? 0) >
+                                      (matchModel?.macxy ?? 0)
+                              ? AppTheme.green
+                              : (matchModel?.mac2y ?? 0) <
+                                          (matchModel?.mac1y ?? 0) &&
+                                      (matchModel?.mac2y ?? 0) <
+                                          (matchModel?.mac2y ?? 0)
+                                  ? AppTheme.red
+                                  : Colors.orange,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               SizedBox(
                 height: 10.h,
               ),
@@ -168,26 +174,23 @@ class OtherMatchWidget extends StatelessWidget {
                   CustomText(
                     text: matchModel?.macDate ?? '',
                   ),
-                  Visibility(
-                    visible: type == 'basketball' || type == 'tennis',
-                    child: Container(
-                      padding: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                          color: AppTheme.greyTicket,
-                          borderRadius: BorderRadius.circular(3.r)),
-                      child: Row(
-                        children: [
-                          CustomText(text: 'predition'.tr),
-                          SizedBox(width: 3.w),
-                          CustomText(
-                            text: (matchModel?.mac1y ?? 0) >
-                                    (matchModel?.mac2y ?? 0)
-                                ? '1'
-                                : '2',
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ],
-                      ),
+                  Container(
+                    padding: const EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                        color: AppTheme.greyTicket,
+                        borderRadius: BorderRadius.circular(3.r)),
+                    child: Row(
+                      children: [
+                        CustomText(text: 'predition'.tr),
+                        SizedBox(width: 3.w),
+                        CustomText(
+                          text: (matchModel?.mac1y ?? 0) >
+                                  (matchModel?.mac2y ?? 0)
+                              ? '1'
+                              : '2',
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ],
                     ),
                   ),
                 ],
