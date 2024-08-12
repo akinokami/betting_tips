@@ -28,6 +28,7 @@ class BasketHistoryScreen extends StatelessWidget {
                   padding: EdgeInsets.only(left: 10.w, right: 10.w),
                   child: Container(
                     width: double.infinity,
+                    height: 35.h,
                     decoration: BoxDecoration(
                         color: AppTheme.greyTicket,
                         borderRadius: BorderRadius.circular(10.r)),
