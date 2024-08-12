@@ -35,8 +35,8 @@ class BaseballHistoryController extends GetxController {
         getHistoryList(selectedDate.value?.macDate ?? '');
       }
     } catch (e) {
-      constants.showSnackBar(
-          title: 'Error', msg: e.toString(), textColor: AppTheme.red);
+      // constants.showSnackBar(
+      //     title: 'Error', msg: e.toString(), textColor: AppTheme.red);
     } finally {
       isLoading.value = false;
     }
@@ -55,8 +55,8 @@ class BaseballHistoryController extends GetxController {
         groupList.add(OtherGroup(name: key, otherList: value));
       });
     } catch (e) {
-      constants.showSnackBar(
-          title: 'Error', msg: e.toString(), textColor: AppTheme.red);
+      // constants.showSnackBar(
+      //     title: 'Error', msg: e.toString(), textColor: AppTheme.red);
     } finally {
       isLoading1.value = false;
     }

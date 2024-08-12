@@ -8,10 +8,10 @@ import 'package:get/get.dart';
 import '../utils/app_theme.dart';
 import '../utils/constants.dart';
 
-class BaseballTodayController extends GetxController {
+class MmaTodayController extends GetxController {
   final searchTxtController = TextEditingController();
   final isLoading = false.obs;
-  RxList<OtherModel> baseballList = <OtherModel>[].obs;
+  RxList<OtherModel> mmaList = <OtherModel>[].obs;
   RxList<OtherGroup> groupList = <OtherGroup>[].obs;
   RxList<OtherModel> searchList = <OtherModel>[].obs;
 
@@ -24,10 +24,9 @@ class BaseballTodayController extends GetxController {
   Future<void> getTodayList() async {
     isLoading.value = true;
     try {
-      final result = await ApiRepo().getBaseballTodayList();
-      baseballList.value = result;
-      var groupedItems =
-          groupBy(baseballList, (OtherModel item) => item.macEvent);
+      final result = await ApiRepo().getMmaTodayList();
+      mmaList.value = result;
+      var groupedItems = groupBy(mmaList, (OtherModel item) => item.macEvent);
       groupedItems.forEach((key, value) {
         groupList.add(OtherGroup(name: key, otherList: value));
       });
@@ -39,12 +38,12 @@ class BaseballTodayController extends GetxController {
     }
   }
 
-  void searchBaseballList(String searchTxt) {
+  void searchMmaList(String searchTxt) {
     isLoading.value = true;
     if (searchTxt.isEmpty || searchTxt == '') {
-      searchList.value = baseballList;
+      searchList.value = mmaList;
     } else {
-      searchList.value = baseballList
+      searchList.value = mmaList
           .where((element) =>
               (element.macHome ?? '')
                   .toLowerCase()

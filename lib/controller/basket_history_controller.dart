@@ -35,8 +35,8 @@ class BasketHistoryController extends GetxController {
         getHistoryList(selectedDate.value?.macDate ?? '');
       }
     } catch (e) {
-      constants.showSnackBar(
-          title: 'Error', msg: e.toString(), textColor: AppTheme.red);
+      // constants.showSnackBar(
+      //     title: 'Error', msg: e.toString(), textColor: AppTheme.red);
     } finally {
       isLoading.value = false;
     }

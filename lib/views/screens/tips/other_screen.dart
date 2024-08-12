@@ -1,6 +1,7 @@
 import 'package:betting_tips/views/screens/tips/baseball/baseball_screen.dart';
 import 'package:betting_tips/views/screens/tips/basketball/basketball_screen.dart';
 import 'package:betting_tips/views/screens/tips/hockey/hockey_screen.dart';
+import 'package:betting_tips/views/screens/tips/mma/mma_screen.dart';
 import 'package:betting_tips/views/screens/tips/tennis/tennis_screen.dart';
 import 'package:betting_tips/views/screens/tips/volleyball/volleyball_screen.dart';
 import 'package:betting_tips/views/widgets/custom_card.dart';
@@ -29,7 +30,7 @@ class OtherScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.all(10.w),
-        child: Column(children: [
+        child: ListView(children: [
           Row(
             children: [
               Expanded(
@@ -183,7 +184,7 @@ class OtherScreen extends StatelessWidget {
               Expanded(
                 child: GestureDetector(
                   onTap: () {
-                    Get.to(() => const VolleyballScreen());
+                    Get.to(() => const MmaScreen());
                   },
                   child: CustomCard(
                     widget: Column(

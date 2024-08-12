@@ -249,4 +249,38 @@ class ApiRepo {
       throw CustomException(e.toString());
     }
   }
+
+  ///Mma
+  Future<List<OtherModel>> getMmaTodayList() async {
+    try {
+      final response = await apiUtils.get(
+          url: "${ApiConstant.baseOsUrl}bahis_kodkey_betclic_today/mma");
+      final btList = jsonDecode(response.data) as List;
+      return btList.map((item) => OtherModel.fromJson(item)).toList();
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
+  Future<List<SportDate>> getMmaDateList() async {
+    try {
+      final response = await apiUtils.get(
+          url: "${ApiConstant.baseOsUrl}bahis_kodkey_betclic_dates/mma");
+      final sdList = jsonDecode(response.data) as List;
+      return sdList.map((item) => SportDate.fromJson(item)).toList();
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
+  Future<List<OtherModel>> getMmaHistoryList(String date) async {
+    try {
+      final response = await apiUtils.get(
+          url: "${ApiConstant.baseOsUrl}bahis_kodkey_betclic_date/mma/$date");
+      final btList = jsonDecode(response.data) as List;
+      return btList.map((item) => OtherModel.fromJson(item)).toList();
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
 }
