@@ -7,8 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import '../../../utils/global.dart';
-import '../../widgets/match_widget.dart';
+import '../../../../utils/global.dart';
+import '../../../widgets/match_widget.dart';
 
 class UpcomingScreen extends StatefulWidget {
   const UpcomingScreen({super.key});
@@ -124,54 +124,53 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
   Widget build(BuildContext context) {
     final upcomingController = Get.put(UpcomingController());
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          centerTitle: true,
-          backgroundColor: AppTheme.white,
-          title: CustomText(
-            text: 'upcoming_tips'.tr,
-            size: 15.sp,
-            fontWeight: FontWeight.w500,
+        // appBar: AppBar(
+        //   elevation: 0,
+        //   centerTitle: true,
+        //   backgroundColor: AppTheme.white,
+        //   title: CustomText(
+        //     text: 'upcoming_tips'.tr,
+        //     size: 15.sp,
+        //     fontWeight: FontWeight.w500,
+        //   ),
+        // ),
+        body: Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.all(10.w),
+          child: CustomTextFormField(
+            controller: upcomingController.searchTxtController,
+            hintText: 'search'.tr,
+            isValidate: false,
+            onChange: (value) {
+              upcomingController.searchUpcomingList(value);
+            },
           ),
         ),
-        body: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.all(8.w),
-              child: CustomTextFormField(
-                controller: upcomingController.searchTxtController,
-                hintText: 'search'.tr,
-                isValidate: false,
-                onChange: (value) {
-                  upcomingController.searchUpcomingList(value);
-                },
-              ),
-            ),
-            Expanded(
-              child: Obx(
-                () => upcomingController.isLoading.value
-                    ? const Center(
-                        child: CircularProgressIndicator(
-                          color: AppTheme.premiumColor2,
-                        ),
-                      )
-                    : upcomingController.searchList.isNotEmpty
-                        ? ListView.builder(
-                            shrinkWrap: true,
-                            itemCount: upcomingController.searchList.length,
-                            itemBuilder: (context, index) {
-                              return MatchWidget(
-                                matchModel:
-                                    upcomingController.searchList[index],
-                              );
-                            })
-                        : Center(
-                            child: CustomText(
-                            text: 'no_data_found'.tr,
-                          )),
-              ),
-            ),
-          ],
-        ));
+        Expanded(
+          child: Obx(
+            () => upcomingController.isLoading.value
+                ? const Center(
+                    child: CircularProgressIndicator(
+                      color: AppTheme.premiumColor2,
+                    ),
+                  )
+                : upcomingController.searchList.isNotEmpty
+                    ? ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: upcomingController.searchList.length,
+                        itemBuilder: (context, index) {
+                          return MatchWidget(
+                            matchModel: upcomingController.searchList[index],
+                          );
+                        })
+                    : Center(
+                        child: CustomText(
+                        text: 'no_data_found'.tr,
+                      )),
+          ),
+        ),
+      ],
+    ));
   }
 }

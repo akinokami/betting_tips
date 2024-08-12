@@ -98,5 +98,8 @@ class EnLanguage {
     'finished_tips': 'Finished Tips',
     'predition': 'Predition :',
     'no_tip_for_this_match': 'No tip for this match.',
+    'basketball_tips': 'Basketball Tips',
+    'today': 'Today',
+    'select_date': 'Select date',
   };
 }

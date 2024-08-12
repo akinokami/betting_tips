@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:betting_tips/models/m_result_model.dart';
 import 'package:betting_tips/models/match_model.dart';
+import 'package:betting_tips/models/other_model.dart';
+import 'package:betting_tips/models/sport_date.dart';
 import 'package:betting_tips/models/user_model.dart';
 import 'package:betting_tips/services/api_constant.dart';
 import 'package:betting_tips/services/api_utils.dart';
@@ -67,6 +71,41 @@ class ApiRepo {
     try {
       final response = await apiUtils.get(url: ApiConstant.configUrl);
       return ConfigModel.fromJson(response.data);
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
+  ///Other Sport
+  Future<List<OtherModel>> getBasketTodayList() async {
+    try {
+      final response = await apiUtils.get(
+          url: "${ApiConstant.baseOsUrl}bahis_kodkey_betclic_today/basket");
+      final btList = jsonDecode(response.data) as List;
+      return btList.map((item) => OtherModel.fromJson(item)).toList();
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
+  Future<List<SportDate>> getBasketDateList() async {
+    try {
+      final response = await apiUtils.get(
+          url: "${ApiConstant.baseOsUrl}bahis_kodkey_betclic_dates/basket");
+      final sdList = jsonDecode(response.data) as List;
+      return sdList.map((item) => SportDate.fromJson(item)).toList();
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
+  Future<List<OtherModel>> getBasketHistoryList(String date) async {
+    try {
+      final response = await apiUtils.get(
+          url:
+              "${ApiConstant.baseOsUrl}bahis_kodkey_betclic_date/basket/$date");
+      final btList = jsonDecode(response.data) as List;
+      return btList.map((item) => OtherModel.fromJson(item)).toList();
     } catch (e) {
       throw CustomException(e.toString());
     }

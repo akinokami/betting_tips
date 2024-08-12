@@ -8,4 +8,6 @@ class ApiConstant {
 
   static String configUrl =
       'https://akinokami.github.io/betting_tips_cookies/betting_tip.json';
+
+  static String baseOsUrl = 'http://198.211.124.204/bap_api/';
 }

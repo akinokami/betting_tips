@@ -60,5 +60,8 @@ class ViLanguage {
     'finished_tips': 'Mẹo đã hoàn thành',
     'predition': 'Dự đoán :',
     'no_tip_for_this_match': 'Không có mẹo cho trận đấu này.',
+    'basketball_tips': 'Mẹo bóng rổ',
+    'today': 'Hôm nay',
+    'select_date': 'Chọn ngày',
   };
 }

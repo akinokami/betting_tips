@@ -1,8 +1,8 @@
 import 'package:betting_tips/controller/home_controller.dart';
 import 'package:betting_tips/views/screens/setting/setting_screen.dart';
-import 'package:betting_tips/views/screens/tips/finish_screen.dart';
-import 'package:betting_tips/views/screens/tips/upcoming_screen.dart';
+import 'package:betting_tips/views/screens/tips/football/football_screen.dart';
 import 'package:betting_tips/views/screens/live/live_screen.dart';
+import 'package:betting_tips/views/screens/tips/other_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -40,18 +40,18 @@ class Home extends StatelessWidget {
             items: [
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.view_timeline_outlined,
+                  Icons.sports_football,
                   size: 15.sp,
                 ),
-                label: 'upcoming'.tr,
+                label: 'football'.tr,
                 backgroundColor: AppTheme.white,
               ),
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.rule,
+                  Icons.category,
                   size: 15.sp,
                 ),
-                label: 'finished'.tr,
+                label: 'other'.tr,
                 backgroundColor: AppTheme.white,
               ),
               BottomNavigationBarItem(
@@ -85,8 +85,8 @@ class Home extends StatelessWidget {
       body: Obx(() => IndexedStack(
             index: homeController.tabIndex.value,
             children: const [
-              UpcomingScreen(),
-              FinishScreen(),
+              FootballScreen(),
+              OtherScreen(),
               LiveScreen(),
               SettingScreen(),
             ],

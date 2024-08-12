@@ -18,24 +18,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final box = GetStorage();
-    Global.language = box.read('language') ?? "en";
+    Global.language = box.read('language') ?? "vi";
     return ScreenUtilInit(
       designSize: const Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
         return GetMaterialApp(
-          title: 'Football Betting Tips',
+          title: 'Betting Tips',
           theme: ThemeData(
             primarySwatch: Colors.grey,
           ),
           translations: Languages(),
-          locale: Global.language == 'zh'
-              ? const Locale('zh', 'CN')
-              : Global.language == 'vi'
+          locale:
+              // Global.language == 'zh'
+              //     ? const Locale('zh', 'CN')
+              //     :
+              Global.language == 'vi'
                   ? const Locale('vi', 'VN')
                   : const Locale('en', 'US'),
-          fallbackLocale: const Locale('en', 'US'),
+          fallbackLocale: const Locale('vi', 'VN'),
           home: const SplashScreen(),
           debugShowCheckedModeBanner: false,
         );
