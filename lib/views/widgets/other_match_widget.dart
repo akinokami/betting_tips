@@ -1,12 +1,10 @@
 import 'package:betting_tips/utils/app_theme.dart';
 import 'package:betting_tips/views/widgets/custom_card.dart';
 import 'package:betting_tips/views/widgets/custom_text.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../models/match_model.dart';
 import '../../models/other_model.dart';
 
 class OtherMatchWidget extends StatelessWidget {

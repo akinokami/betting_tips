@@ -63,5 +63,12 @@ class ViLanguage {
     'basketball_tips': 'Mẹo bóng rổ',
     'today': 'Hôm nay',
     'select_date': 'Chọn ngày',
+    'basketball': 'Bóng rổ',
+    'tennis': 'quần vợt',
+    'hockey': 'Khúc côn cầu',
+    'volleyball': 'Bóng chuyền',
+    'tennis_tips': 'Mẹo quần vợt',
+    'hockey_tips': 'Mẹo khúc côn cầu',
+    'volleyball_tips': 'Mẹo bóng chuyền',
   };
 }

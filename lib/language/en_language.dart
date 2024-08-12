@@ -101,5 +101,12 @@ class EnLanguage {
     'basketball_tips': 'Basketball Tips',
     'today': 'Today',
     'select_date': 'Select date',
+    'basketball': 'Basketball',
+    'tennis': 'Tennis',
+    'hockey': 'Hockey',
+    'volleyball': 'Volleyball',
+    'tennis_tips': 'Tennis Tips',
+    'hockey_tips': 'Hockey Tips',
+    'volleyball_tips': 'Volleyball Tips',
   };
 }
