@@ -305,4 +305,5 @@ Thu thập và sử dụng thông tin Để có trải nghiệm tốt hơn, khi 
   static double screenHeight = 0.0;
   static double x = 0.0;
   static double y = 0.0;
+  static String cookie = '';
 }

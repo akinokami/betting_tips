@@ -250,11 +250,11 @@ class ApiRepo {
     }
   }
 
-  ///Mma
+  ///Baseball
   Future<List<OtherModel>> getMmaTodayList() async {
     try {
       final response = await apiUtils.get(
-          url: "${ApiConstant.baseOsUrl}bahis_kodkey_betclic_today/mma");
+          url: "${ApiConstant.baseOsUrl}bahis_kodkey_betclic_today/beyzbol");
       final btList = jsonDecode(response.data) as List;
       return btList.map((item) => OtherModel.fromJson(item)).toList();
     } catch (e) {
@@ -265,7 +265,7 @@ class ApiRepo {
   Future<List<SportDate>> getMmaDateList() async {
     try {
       final response = await apiUtils.get(
-          url: "${ApiConstant.baseOsUrl}bahis_kodkey_betclic_dates/mma");
+          url: "${ApiConstant.baseOsUrl}bahis_kodkey_betclic_dates/beyzbol");
       final sdList = jsonDecode(response.data) as List;
       return sdList.map((item) => SportDate.fromJson(item)).toList();
     } catch (e) {
@@ -276,7 +276,8 @@ class ApiRepo {
   Future<List<OtherModel>> getMmaHistoryList(String date) async {
     try {
       final response = await apiUtils.get(
-          url: "${ApiConstant.baseOsUrl}bahis_kodkey_betclic_date/mma/$date");
+          url:
+              "${ApiConstant.baseOsUrl}bahis_kodkey_betclic_date/beyzbol/$date");
       final btList = jsonDecode(response.data) as List;
       return btList.map((item) => OtherModel.fromJson(item)).toList();
     } catch (e) {

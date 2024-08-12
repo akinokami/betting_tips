@@ -1,11 +1,18 @@
+import 'dart:io';
+
 import 'package:betting_tips/services/api_constant.dart';
 import 'package:betting_tips/utils/custom_exception.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:dio_cookie_manager/dio_cookie_manager.dart';
+import 'package:path_provider/path_provider.dart';
 
 class ApiUtils {
   final _dio = Dio();
+  static PersistCookieJar? _cookieJar;
+
   final box = GetStorage();
 
   static final ApiUtils singleton = ApiUtils._();
@@ -29,6 +36,16 @@ class ApiUtils {
   setGitCookies(String cookies) {
     _dio.options.headers['Cookie'] = cookies;
     print("git cookies>>$cookies");
+  }
+
+  static Future<PersistCookieJar> get cookieJar async {
+    if (_cookieJar == null) {
+      Directory appDocDir = await getApplicationDocumentsDirectory();
+      String appDocPath = appDocDir.path;
+      print("Obtained file system directory appdocpath: " + appDocPath);
+      _cookieJar = PersistCookieJar(storage: FileStorage(appDocPath));
+    }
+    return _cookieJar!;
   }
 
   void setCookies(String cookies) {
