@@ -9,12 +9,12 @@ import 'package:get/get.dart';
 import '../utils/app_theme.dart';
 import '../utils/constants.dart';
 
-class BasketHistoryController extends GetxController {
+class TennisHistoryController extends GetxController {
   final searchTxtController = TextEditingController();
   final isLoading = false.obs;
   final isLoading1 = false.obs;
   RxList<SportDate> dateList = <SportDate>[].obs;
-  RxList<OtherModel> basketList = <OtherModel>[].obs;
+  RxList<OtherModel> tennisList = <OtherModel>[].obs;
   RxList<OtherGroup> groupList = <OtherGroup>[].obs;
   Rx<SportDate?> selectedDate = Rx<SportDate?>(null);
   RxList<OtherModel> searchList = <OtherModel>[].obs;
@@ -28,7 +28,7 @@ class BasketHistoryController extends GetxController {
   Future<void> getDateList() async {
     isLoading.value = true;
     try {
-      final result = await ApiRepo().getBasketDateList();
+      final result = await ApiRepo().getTennisDateList();
       dateList.value = result;
       if (dateList.isNotEmpty) {
         selectedDate.value = dateList[0];
@@ -45,12 +45,12 @@ class BasketHistoryController extends GetxController {
   Future<void> getHistoryList(String date) async {
     isLoading1.value = true;
     try {
-      basketList.clear();
+      tennisList.clear();
       groupList.clear();
-      final result = await ApiRepo().getBasketHistoryList(date);
-      basketList.value = result;
+      final result = await ApiRepo().getTennisHistoryList(date);
+      tennisList.value = result;
       var groupedItems =
-          groupBy(basketList, (OtherModel item) => item.macEvent);
+          groupBy(tennisList, (OtherModel item) => item.macEvent);
       groupedItems.forEach((key, value) {
         groupList.add(OtherGroup(name: key, otherList: value));
       });
@@ -65,9 +65,9 @@ class BasketHistoryController extends GetxController {
   void searchBasketballList(String searchTxt) {
     isLoading.value = true;
     if (searchTxt.isEmpty || searchTxt == '') {
-      searchList.value = basketList;
+      searchList.value = tennisList;
     } else {
-      searchList.value = basketList
+      searchList.value = tennisList
           .where((element) =>
               (element.macHome ?? '')
                   .toLowerCase()

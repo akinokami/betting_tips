@@ -64,7 +64,7 @@ class OtherMatchWidget extends StatelessWidget {
                 height: 10.h,
               ),
               Visibility(
-                visible: type == 'basketball',
+                visible: type == 'basketball' || type == 'tennis',
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -169,7 +169,7 @@ class OtherMatchWidget extends StatelessWidget {
                     text: matchModel?.macDate ?? '',
                   ),
                   Visibility(
-                    visible: type == 'basketball',
+                    visible: type == 'basketball' || type == 'tennis',
                     child: Container(
                       padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(

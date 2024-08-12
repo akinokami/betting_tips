@@ -5,19 +5,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../../controller/basket_history_controller.dart';
+import '../../../../controller/tennis_history_controller.dart';
 import '../../../widgets/custom_text_form_field.dart';
 import '../../../widgets/other_match_widget.dart';
 
-class BasketHistoryScreen extends StatelessWidget {
-  const BasketHistoryScreen({super.key});
+class TennisHistoryScreen extends StatelessWidget {
+  const TennisHistoryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final basketHistoryController = Get.put(BasketHistoryController());
+    final tennisHistoryController = Get.put(TennisHistoryController());
     return Scaffold(
         body: Obx(
-      () => basketHistoryController.isLoading.value
+      () => tennisHistoryController.isLoading.value
           ? const Center(
               child: CircularProgressIndicator(
                 color: AppTheme.premiumColor2,
@@ -41,7 +41,7 @@ class BasketHistoryScreen extends StatelessWidget {
                             iconEnabledColor: Colors.black,
                             // icon: const Icon(Icons.arrow_drop_down_circle),
                             padding: EdgeInsets.only(left: 8.w, right: 8.w),
-                            value: basketHistoryController.selectedDate.value,
+                            value: tennisHistoryController.selectedDate.value,
                             hint: CustomText(
                               text: 'select_date'.tr,
                               textColor: Colors.black,
@@ -50,7 +50,7 @@ class BasketHistoryScreen extends StatelessWidget {
                             style: const TextStyle(
                               color: Colors.black,
                             ),
-                            items: basketHistoryController.dateList
+                            items: tennisHistoryController.dateList
                                 .map<DropdownMenuItem<SportDate>>(
                                     (SportDate? value) {
                               return DropdownMenuItem<SportDate>(
@@ -65,11 +65,11 @@ class BasketHistoryScreen extends StatelessWidget {
                               );
                             }).toList(),
                             onChanged: (SportDate? newValue) {
-                              basketHistoryController.selectedDate.value =
+                              tennisHistoryController.selectedDate.value =
                                   newValue;
-                              basketHistoryController
+                              tennisHistoryController
                                   .getHistoryList(newValue?.macDate ?? '');
-                              basketHistoryController.searchTxtController.text =
+                              tennisHistoryController.searchTxtController.text =
                                   '';
                             },
                           )),
@@ -79,35 +79,35 @@ class BasketHistoryScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(10.w),
                   child: CustomTextFormField(
-                    controller: basketHistoryController.searchTxtController,
+                    controller: tennisHistoryController.searchTxtController,
                     hintText: 'search'.tr,
                     isValidate: false,
                     onChange: (value) {
-                      basketHistoryController.searchBasketballList(value);
+                      tennisHistoryController.searchBasketballList(value);
                     },
                   ),
                 ),
                 Expanded(
                   child: Obx(
-                    () => basketHistoryController.isLoading1.value
+                    () => tennisHistoryController.isLoading1.value
                         ? const Center(
                             child: CircularProgressIndicator(
                               color: AppTheme.premiumColor2,
                             ),
                           )
-                        : basketHistoryController
+                        : tennisHistoryController
                                 .searchTxtController.text.isNotEmpty
-                            ? basketHistoryController.searchList.isNotEmpty
+                            ? tennisHistoryController.searchList.isNotEmpty
                                 ? ListView.builder(
                                     shrinkWrap: true,
-                                    itemCount: basketHistoryController
+                                    itemCount: tennisHistoryController
                                         .searchList.length,
                                     physics:
                                         const NeverScrollableScrollPhysics(),
                                     itemBuilder: (context, index) {
                                       return OtherMatchWidget(
-                                        type: 'basketball',
-                                        matchModel: basketHistoryController
+                                        type: 'tennis',
+                                        matchModel: tennisHistoryController
                                             .searchList[index],
                                       );
                                     })
@@ -115,10 +115,10 @@ class BasketHistoryScreen extends StatelessWidget {
                                     child: CustomText(
                                     text: 'no_data_found'.tr,
                                   ))
-                            : basketHistoryController.groupList.isNotEmpty
+                            : tennisHistoryController.groupList.isNotEmpty
                                 ? ListView.builder(
                                     shrinkWrap: true,
-                                    itemCount: basketHistoryController
+                                    itemCount: tennisHistoryController
                                         .groupList.length,
                                     itemBuilder: (context, index) {
                                       return Column(
@@ -133,7 +133,7 @@ class BasketHistoryScreen extends StatelessWidget {
                                                 ),
                                                 CustomText(
                                                     text:
-                                                        basketHistoryController
+                                                        tennisHistoryController
                                                                 .groupList[
                                                                     index]
                                                                 .name ??
@@ -146,7 +146,7 @@ class BasketHistoryScreen extends StatelessWidget {
                                           ),
                                           ListView.builder(
                                               shrinkWrap: true,
-                                              itemCount: basketHistoryController
+                                              itemCount: tennisHistoryController
                                                   .groupList[index]
                                                   .otherList
                                                   ?.length,
@@ -154,9 +154,9 @@ class BasketHistoryScreen extends StatelessWidget {
                                                   const NeverScrollableScrollPhysics(),
                                               itemBuilder: (context, index1) {
                                                 return OtherMatchWidget(
-                                                  type: 'basketball',
+                                                  type: 'tennis',
                                                   matchModel:
-                                                      basketHistoryController
+                                                      tennisHistoryController
                                                           .groupList[index]
                                                           .otherList?[index1],
                                                 );

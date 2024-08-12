@@ -77,6 +77,7 @@ class ApiRepo {
   }
 
   ///Other Sport
+  ///Basketball
   Future<List<OtherModel>> getBasketTodayList() async {
     try {
       final response = await apiUtils.get(
@@ -104,6 +105,40 @@ class ApiRepo {
       final response = await apiUtils.get(
           url:
               "${ApiConstant.baseOsUrl}bahis_kodkey_betclic_date/basket/$date");
+      final btList = jsonDecode(response.data) as List;
+      return btList.map((item) => OtherModel.fromJson(item)).toList();
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
+  ///Tennis
+  Future<List<OtherModel>> getTennisTodayList() async {
+    try {
+      final response = await apiUtils.get(
+          url: "${ApiConstant.baseOsUrl}bahis_kodkey_betclic_today/tenis");
+      final btList = jsonDecode(response.data) as List;
+      return btList.map((item) => OtherModel.fromJson(item)).toList();
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
+  Future<List<SportDate>> getTennisDateList() async {
+    try {
+      final response = await apiUtils.get(
+          url: "${ApiConstant.baseOsUrl}bahis_kodkey_betclic_dates/tenis");
+      final sdList = jsonDecode(response.data) as List;
+      return sdList.map((item) => SportDate.fromJson(item)).toList();
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
+  Future<List<OtherModel>> getTennisHistoryList(String date) async {
+    try {
+      final response = await apiUtils.get(
+          url: "${ApiConstant.baseOsUrl}bahis_kodkey_betclic_date/tenis/$date");
       final btList = jsonDecode(response.data) as List;
       return btList.map((item) => OtherModel.fromJson(item)).toList();
     } catch (e) {

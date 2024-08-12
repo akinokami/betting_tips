@@ -1,4 +1,5 @@
 import 'package:betting_tips/views/screens/tips/basketball/basketball_screen.dart';
+import 'package:betting_tips/views/screens/tips/tennis/tennis_screen.dart';
 import 'package:betting_tips/views/widgets/custom_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -50,18 +51,23 @@ class OtherScreen extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: CustomCard(
-                  widget: Row(
-                    children: [
-                      Icon(
-                        Icons.sports_tennis,
-                        size: 18.sp,
-                      ),
-                      SizedBox(
-                        width: 5.w,
-                      ),
-                      CustomText(text: 'tennis'.tr)
-                    ],
+                child: GestureDetector(
+                  onTap: () {
+                    Get.to(() => const TennisScreen());
+                  },
+                  child: CustomCard(
+                    widget: Row(
+                      children: [
+                        Icon(
+                          Icons.sports_tennis,
+                          size: 18.sp,
+                        ),
+                        SizedBox(
+                          width: 5.w,
+                        ),
+                        CustomText(text: 'tennis'.tr)
+                      ],
+                    ),
                   ),
                 ),
               ),

@@ -1,63 +1,63 @@
-import 'package:betting_tips/controller/basket_today_controller.dart';
 import 'package:betting_tips/utils/app_theme.dart';
 import 'package:betting_tips/views/widgets/other_match_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../../../controller/tennis_today_controller.dart';
 import '../../../widgets/custom_text.dart';
 import '../../../widgets/custom_text_form_field.dart';
 
-class BasketTodayScreen extends StatelessWidget {
-  const BasketTodayScreen({super.key});
+class TennisTodayScreen extends StatelessWidget {
+  const TennisTodayScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final basketTodayController = Get.put(BasketTodayController());
+    final tennisTodayController = Get.put(TennisTodayController());
     return Scaffold(
       body: Column(
         children: [
           Padding(
             padding: EdgeInsets.all(10.w),
             child: CustomTextFormField(
-              controller: basketTodayController.searchTxtController,
+              controller: tennisTodayController.searchTxtController,
               hintText: 'search'.tr,
               isValidate: false,
               onChange: (value) {
-                basketTodayController.searchBasketballList(value);
+                tennisTodayController.searchBasketballList(value);
               },
             ),
           ),
           Expanded(
             child: Obx(
-              () => basketTodayController.isLoading.value
+              () => tennisTodayController.isLoading.value
                   ? const Center(
                       child: CircularProgressIndicator(
                         color: AppTheme.premiumColor2,
                       ),
                     )
-                  : basketTodayController.searchTxtController.text.isNotEmpty
-                      ? basketTodayController.searchList.isNotEmpty
+                  : tennisTodayController.searchTxtController.text.isNotEmpty
+                      ? tennisTodayController.searchList.isNotEmpty
                           ? ListView.builder(
                               shrinkWrap: true,
                               itemCount:
-                                  basketTodayController.searchList.length,
+                                  tennisTodayController.searchList.length,
                               physics: const NeverScrollableScrollPhysics(),
                               itemBuilder: (context, index) {
                                 return OtherMatchWidget(
-                                  type: 'basketball',
+                                  type: 'tennis',
                                   matchModel:
-                                      basketTodayController.searchList[index],
+                                      tennisTodayController.searchList[index],
                                 );
                               })
                           : Center(
                               child: CustomText(
                               text: 'no_data_found'.tr,
                             ))
-                      : basketTodayController.groupList.isNotEmpty
+                      : tennisTodayController.groupList.isNotEmpty
                           ? ListView.builder(
                               shrinkWrap: true,
-                              itemCount: basketTodayController.groupList.length,
+                              itemCount: tennisTodayController.groupList.length,
                               itemBuilder: (context, index) {
                                 return Column(
                                   children: [
@@ -70,7 +70,7 @@ class BasketTodayScreen extends StatelessWidget {
                                             width: 10.w,
                                           ),
                                           CustomText(
-                                              text: basketTodayController
+                                              text: tennisTodayController
                                                       .groupList[index].name ??
                                                   ''),
                                           SizedBox(
@@ -81,14 +81,14 @@ class BasketTodayScreen extends StatelessWidget {
                                     ),
                                     ListView.builder(
                                         shrinkWrap: true,
-                                        itemCount: basketTodayController
+                                        itemCount: tennisTodayController
                                             .groupList[index].otherList?.length,
                                         physics:
                                             const NeverScrollableScrollPhysics(),
                                         itemBuilder: (context, index1) {
                                           return OtherMatchWidget(
-                                            type: 'basketball',
-                                            matchModel: basketTodayController
+                                            type: 'tennis',
+                                            matchModel: tennisTodayController
                                                 .groupList[index]
                                                 .otherList?[index1],
                                           );
