@@ -9,12 +9,12 @@ import 'package:get/get.dart';
 import '../utils/app_theme.dart';
 import '../utils/constants.dart';
 
-class TennisHistoryController extends GetxController {
+class VolleyballHistoryController extends GetxController {
   final searchTxtController = TextEditingController();
   final isLoading = false.obs;
   final isLoading1 = false.obs;
   RxList<SportDate> dateList = <SportDate>[].obs;
-  RxList<OtherModel> tennisList = <OtherModel>[].obs;
+  RxList<OtherModel> volleyballList = <OtherModel>[].obs;
   RxList<OtherGroup> groupList = <OtherGroup>[].obs;
   Rx<SportDate?> selectedDate = Rx<SportDate?>(null);
   RxList<OtherModel> searchList = <OtherModel>[].obs;
@@ -28,7 +28,7 @@ class TennisHistoryController extends GetxController {
   Future<void> getDateList() async {
     isLoading.value = true;
     try {
-      final result = await ApiRepo().getTennisDateList();
+      final result = await ApiRepo().getVolleyballDateList();
       dateList.value = result;
       if (dateList.isNotEmpty) {
         selectedDate.value = dateList[0];
@@ -45,12 +45,12 @@ class TennisHistoryController extends GetxController {
   Future<void> getHistoryList(String date) async {
     isLoading1.value = true;
     try {
-      tennisList.clear();
+      volleyballList.clear();
       groupList.clear();
-      final result = await ApiRepo().getTennisHistoryList(date);
-      tennisList.value = result;
+      final result = await ApiRepo().getVolleyballHistoryList(date);
+      volleyballList.value = result;
       var groupedItems =
-          groupBy(tennisList, (OtherModel item) => item.macEvent);
+          groupBy(volleyballList, (OtherModel item) => item.macEvent);
       groupedItems.forEach((key, value) {
         groupList.add(OtherGroup(name: key, otherList: value));
       });
@@ -62,12 +62,12 @@ class TennisHistoryController extends GetxController {
     }
   }
 
-  void searchTennisList(String searchTxt) {
+  void searchVolleyList(String searchTxt) {
     isLoading.value = true;
     if (searchTxt.isEmpty || searchTxt == '') {
-      searchList.value = tennisList;
+      searchList.value = volleyballList;
     } else {
-      searchList.value = tennisList
+      searchList.value = volleyballList
           .where((element) =>
               (element.macHome ?? '')
                   .toLowerCase()

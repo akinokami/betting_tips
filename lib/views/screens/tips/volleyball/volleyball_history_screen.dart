@@ -1,3 +1,4 @@
+import 'package:betting_tips/controller/volleyball_history_controller.dart';
 import 'package:betting_tips/models/sport_date.dart';
 import 'package:betting_tips/utils/app_theme.dart';
 import 'package:betting_tips/views/widgets/custom_text.dart';
@@ -9,15 +10,15 @@ import '../../../../controller/tennis_history_controller.dart';
 import '../../../widgets/custom_text_form_field.dart';
 import '../../../widgets/other_match_widget.dart';
 
-class TennisHistoryScreen extends StatelessWidget {
-  const TennisHistoryScreen({super.key});
+class VolleyballHistoryScreen extends StatelessWidget {
+  const VolleyballHistoryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final tennisHistoryController = Get.put(TennisHistoryController());
+    final volleyHistoryController = Get.put(VolleyballHistoryController());
     return Scaffold(
         body: Obx(
-      () => tennisHistoryController.isLoading.value
+      () => volleyHistoryController.isLoading.value
           ? const Center(
               child: CircularProgressIndicator(
                 color: AppTheme.premiumColor2,
@@ -41,7 +42,7 @@ class TennisHistoryScreen extends StatelessWidget {
                             iconEnabledColor: Colors.black,
                             // icon: const Icon(Icons.arrow_drop_down_circle),
                             padding: EdgeInsets.only(left: 8.w, right: 8.w),
-                            value: tennisHistoryController.selectedDate.value,
+                            value: volleyHistoryController.selectedDate.value,
                             hint: CustomText(
                               text: 'select_date'.tr,
                               textColor: Colors.black,
@@ -50,7 +51,7 @@ class TennisHistoryScreen extends StatelessWidget {
                             style: const TextStyle(
                               color: Colors.black,
                             ),
-                            items: tennisHistoryController.dateList
+                            items: volleyHistoryController.dateList
                                 .map<DropdownMenuItem<SportDate>>(
                                     (SportDate? value) {
                               return DropdownMenuItem<SportDate>(
@@ -65,11 +66,11 @@ class TennisHistoryScreen extends StatelessWidget {
                               );
                             }).toList(),
                             onChanged: (SportDate? newValue) {
-                              tennisHistoryController.selectedDate.value =
+                              volleyHistoryController.selectedDate.value =
                                   newValue;
-                              tennisHistoryController
+                              volleyHistoryController
                                   .getHistoryList(newValue?.macDate ?? '');
-                              tennisHistoryController.searchTxtController.text =
+                              volleyHistoryController.searchTxtController.text =
                                   '';
                             },
                           )),
@@ -79,35 +80,35 @@ class TennisHistoryScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(10.w),
                   child: CustomTextFormField(
-                    controller: tennisHistoryController.searchTxtController,
+                    controller: volleyHistoryController.searchTxtController,
                     hintText: 'search'.tr,
                     isValidate: false,
                     onChange: (value) {
-                      tennisHistoryController.searchTennisList(value);
+                      volleyHistoryController.searchVolleyList(value);
                     },
                   ),
                 ),
                 Expanded(
                   child: Obx(
-                    () => tennisHistoryController.isLoading1.value
+                    () => volleyHistoryController.isLoading1.value
                         ? const Center(
                             child: CircularProgressIndicator(
                               color: AppTheme.premiumColor2,
                             ),
                           )
-                        : tennisHistoryController
+                        : volleyHistoryController
                                 .searchTxtController.text.isNotEmpty
-                            ? tennisHistoryController.searchList.isNotEmpty
+                            ? volleyHistoryController.searchList.isNotEmpty
                                 ? ListView.builder(
                                     shrinkWrap: true,
-                                    itemCount: tennisHistoryController
+                                    itemCount: volleyHistoryController
                                         .searchList.length,
                                     physics:
                                         const NeverScrollableScrollPhysics(),
                                     itemBuilder: (context, index) {
                                       return OtherMatchWidget(
-                                        type: 'tennis',
-                                        matchModel: tennisHistoryController
+                                        type: 'volleyball',
+                                        matchModel: volleyHistoryController
                                             .searchList[index],
                                       );
                                     })
@@ -115,10 +116,10 @@ class TennisHistoryScreen extends StatelessWidget {
                                     child: CustomText(
                                     text: 'no_data_found'.tr,
                                   ))
-                            : tennisHistoryController.groupList.isNotEmpty
+                            : volleyHistoryController.groupList.isNotEmpty
                                 ? ListView.builder(
                                     shrinkWrap: true,
-                                    itemCount: tennisHistoryController
+                                    itemCount: volleyHistoryController
                                         .groupList.length,
                                     itemBuilder: (context, index) {
                                       return Column(
@@ -133,7 +134,7 @@ class TennisHistoryScreen extends StatelessWidget {
                                                 ),
                                                 CustomText(
                                                     text:
-                                                        tennisHistoryController
+                                                        volleyHistoryController
                                                                 .groupList[
                                                                     index]
                                                                 .name ??
@@ -146,7 +147,7 @@ class TennisHistoryScreen extends StatelessWidget {
                                           ),
                                           ListView.builder(
                                               shrinkWrap: true,
-                                              itemCount: tennisHistoryController
+                                              itemCount: volleyHistoryController
                                                   .groupList[index]
                                                   .otherList
                                                   ?.length,
@@ -154,9 +155,9 @@ class TennisHistoryScreen extends StatelessWidget {
                                                   const NeverScrollableScrollPhysics(),
                                               itemBuilder: (context, index1) {
                                                 return OtherMatchWidget(
-                                                  type: 'tennis',
+                                                  type: 'volleyball',
                                                   matchModel:
-                                                      tennisHistoryController
+                                                      volleyHistoryController
                                                           .groupList[index]
                                                           .otherList?[index1],
                                                 );

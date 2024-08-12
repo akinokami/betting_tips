@@ -83,7 +83,7 @@ class HockeyHistoryScreen extends StatelessWidget {
                     hintText: 'search'.tr,
                     isValidate: false,
                     onChange: (value) {
-                      hockeyHistoryController.searchBasketballList(value);
+                      hockeyHistoryController.searchHockeyList(value);
                     },
                   ),
                 ),
@@ -106,7 +106,7 @@ class HockeyHistoryScreen extends StatelessWidget {
                                         const NeverScrollableScrollPhysics(),
                                     itemBuilder: (context, index) {
                                       return OtherMatchWidget(
-                                        type: 'tennis',
+                                        type: 'hockey',
                                         matchModel: hockeyHistoryController
                                             .searchList[index],
                                       );
@@ -154,7 +154,7 @@ class HockeyHistoryScreen extends StatelessWidget {
                                                   const NeverScrollableScrollPhysics(),
                                               itemBuilder: (context, index1) {
                                                 return OtherMatchWidget(
-                                                  type: 'tennis',
+                                                  type: 'hockey',
                                                   matchModel:
                                                       hockeyHistoryController
                                                           .groupList[index]

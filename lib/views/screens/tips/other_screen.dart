@@ -1,6 +1,7 @@
 import 'package:betting_tips/views/screens/tips/basketball/basketball_screen.dart';
 import 'package:betting_tips/views/screens/tips/hockey/hockey_screen.dart';
 import 'package:betting_tips/views/screens/tips/tennis/tennis_screen.dart';
+import 'package:betting_tips/views/screens/tips/volleyball/volleyball_screen.dart';
 import 'package:betting_tips/views/widgets/custom_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -85,7 +86,7 @@ class OtherScreen extends StatelessWidget {
                     widget: Row(
                       children: [
                         Icon(
-                          Icons.sports_basketball,
+                          Icons.sports_hockey,
                           size: 18.sp,
                         ),
                         SizedBox(
@@ -100,13 +101,13 @@ class OtherScreen extends StatelessWidget {
               Expanded(
                 child: GestureDetector(
                   onTap: () {
-                    Get.to(() => const TennisScreen());
+                    Get.to(() => const VolleyballScreen());
                   },
                   child: CustomCard(
                     widget: Row(
                       children: [
                         Icon(
-                          Icons.sports_tennis,
+                          Icons.sports_volleyball,
                           size: 18.sp,
                         ),
                         SizedBox(

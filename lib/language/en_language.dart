@@ -91,7 +91,7 @@ class EnLanguage {
         'Some channels may take a while to load as they have high quality streams. Please be patient.',
     'live': 'Live',
     'scores': 'Scores',
-    'football_betting_tips': 'Football Betting Tips',
+    'betting_tips': 'Betting Tips',
     'upcoming': 'Upcoming',
     'finished': 'Finished',
     'upcoming_tips': 'Upcoming Tips',

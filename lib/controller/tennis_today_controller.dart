@@ -39,7 +39,7 @@ class TennisTodayController extends GetxController {
     }
   }
 
-  void searchBasketballList(String searchTxt) {
+  void searchTennisList(String searchTxt) {
     isLoading.value = true;
     if (searchTxt.isEmpty || searchTxt == '') {
       searchList.value = tennisList;

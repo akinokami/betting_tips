@@ -62,7 +62,7 @@ class HockeyHistoryController extends GetxController {
     }
   }
 
-  void searchBasketballList(String searchTxt) {
+  void searchHockeyList(String searchTxt) {
     isLoading.value = true;
     if (searchTxt.isEmpty || searchTxt == '') {
       searchList.value = hockeyList;

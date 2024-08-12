@@ -4,60 +4,62 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../../controller/tennis_today_controller.dart';
+import '../../../../controller/volleyball_today_controller.dart';
 import '../../../widgets/custom_text.dart';
 import '../../../widgets/custom_text_form_field.dart';
 
-class TennisTodayScreen extends StatelessWidget {
-  const TennisTodayScreen({super.key});
+class VolleyballTodayScreen extends StatelessWidget {
+  const VolleyballTodayScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final tennisTodayController = Get.put(TennisTodayController());
+    final volleyballTodayController = Get.put(VolleyballTodayController());
     return Scaffold(
       body: Column(
         children: [
           Padding(
             padding: EdgeInsets.all(10.w),
             child: CustomTextFormField(
-              controller: tennisTodayController.searchTxtController,
+              controller: volleyballTodayController.searchTxtController,
               hintText: 'search'.tr,
               isValidate: false,
               onChange: (value) {
-                tennisTodayController.searchTennisList(value);
+                volleyballTodayController.searchVolleyballList(value);
               },
             ),
           ),
           Expanded(
             child: Obx(
-              () => tennisTodayController.isLoading.value
+              () => volleyballTodayController.isLoading.value
                   ? const Center(
                       child: CircularProgressIndicator(
                         color: AppTheme.premiumColor2,
                       ),
                     )
-                  : tennisTodayController.searchTxtController.text.isNotEmpty
-                      ? tennisTodayController.searchList.isNotEmpty
+                  : volleyballTodayController
+                          .searchTxtController.text.isNotEmpty
+                      ? volleyballTodayController.searchList.isNotEmpty
                           ? ListView.builder(
                               shrinkWrap: true,
                               itemCount:
-                                  tennisTodayController.searchList.length,
+                                  volleyballTodayController.searchList.length,
                               physics: const NeverScrollableScrollPhysics(),
                               itemBuilder: (context, index) {
                                 return OtherMatchWidget(
-                                  type: 'tennis',
-                                  matchModel:
-                                      tennisTodayController.searchList[index],
+                                  type: 'volleyball',
+                                  matchModel: volleyballTodayController
+                                      .searchList[index],
                                 );
                               })
                           : Center(
                               child: CustomText(
                               text: 'no_data_found'.tr,
                             ))
-                      : tennisTodayController.groupList.isNotEmpty
+                      : volleyballTodayController.groupList.isNotEmpty
                           ? ListView.builder(
                               shrinkWrap: true,
-                              itemCount: tennisTodayController.groupList.length,
+                              itemCount:
+                                  volleyballTodayController.groupList.length,
                               itemBuilder: (context, index) {
                                 return Column(
                                   children: [
@@ -70,7 +72,7 @@ class TennisTodayScreen extends StatelessWidget {
                                             width: 10.w,
                                           ),
                                           CustomText(
-                                              text: tennisTodayController
+                                              text: volleyballTodayController
                                                       .groupList[index].name ??
                                                   ''),
                                           SizedBox(
@@ -81,16 +83,17 @@ class TennisTodayScreen extends StatelessWidget {
                                     ),
                                     ListView.builder(
                                         shrinkWrap: true,
-                                        itemCount: tennisTodayController
+                                        itemCount: volleyballTodayController
                                             .groupList[index].otherList?.length,
                                         physics:
                                             const NeverScrollableScrollPhysics(),
                                         itemBuilder: (context, index1) {
                                           return OtherMatchWidget(
-                                            type: 'tennis',
-                                            matchModel: tennisTodayController
-                                                .groupList[index]
-                                                .otherList?[index1],
+                                            type: 'volleyball',
+                                            matchModel:
+                                                volleyballTodayController
+                                                    .groupList[index]
+                                                    .otherList?[index1],
                                           );
                                         }),
                                   ],

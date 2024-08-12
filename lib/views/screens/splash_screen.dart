@@ -22,7 +22,7 @@ class SplashScreen extends StatelessWidget {
             FlutterLogo(size: 80.sp),
             SizedBox(height: 30.h),
             CustomText(
-              text: 'football_betting_tips'.tr,
+              text: 'betting_tips'.tr,
               size: 14.sp,
             ),
             SizedBox(height: 30.h),
