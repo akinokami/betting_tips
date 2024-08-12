@@ -108,5 +108,8 @@ class EnLanguage {
     'tennis_tips': 'Tennis Tips',
     'hockey_tips': 'Hockey Tips',
     'volleyball_tips': 'Volleyball Tips',
+    'football': 'Football',
+    'football_tips': 'Football Tips',
+    'other_sports': 'Other Sports',
   };
 }

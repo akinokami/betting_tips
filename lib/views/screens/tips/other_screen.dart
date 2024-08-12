@@ -18,7 +18,7 @@ class OtherScreen extends StatelessWidget {
         centerTitle: true,
         backgroundColor: AppTheme.white,
         title: CustomText(
-          text: 'other_sport'.tr,
+          text: 'other_sports'.tr,
           size: 15.sp,
           fontWeight: FontWeight.w500,
         ),

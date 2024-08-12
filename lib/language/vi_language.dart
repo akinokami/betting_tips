@@ -70,5 +70,8 @@ class ViLanguage {
     'tennis_tips': 'Mẹo quần vợt',
     'hockey_tips': 'Mẹo khúc côn cầu',
     'volleyball_tips': 'Mẹo bóng chuyền',
+    'football': 'Bóng đá',
+    'football_tips': 'Mẹo bóng đá',
+    'other_sports': 'Các môn thể thao khác',
   };
 }
