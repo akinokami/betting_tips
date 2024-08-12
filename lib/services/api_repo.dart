@@ -145,4 +145,38 @@ class ApiRepo {
       throw CustomException(e.toString());
     }
   }
+
+  ///Hockey
+  Future<List<OtherModel>> getHockeyTodayList() async {
+    try {
+      final response = await apiUtils.get(
+          url: "${ApiConstant.baseOsUrl}bahis_kodkey_betclic_today/hokey");
+      final btList = jsonDecode(response.data) as List;
+      return btList.map((item) => OtherModel.fromJson(item)).toList();
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
+  Future<List<SportDate>> getHockeyDateList() async {
+    try {
+      final response = await apiUtils.get(
+          url: "${ApiConstant.baseOsUrl}bahis_kodkey_betclic_dates/hokey");
+      final sdList = jsonDecode(response.data) as List;
+      return sdList.map((item) => SportDate.fromJson(item)).toList();
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
+  Future<List<OtherModel>> getHockeyHistoryList(String date) async {
+    try {
+      final response = await apiUtils.get(
+          url: "${ApiConstant.baseOsUrl}bahis_kodkey_betclic_date/hokey/$date");
+      final btList = jsonDecode(response.data) as List;
+      return btList.map((item) => OtherModel.fromJson(item)).toList();
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
 }
