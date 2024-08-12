@@ -7,6 +7,7 @@ import 'package:betting_tips/models/sport_date.dart';
 import 'package:betting_tips/models/user_model.dart';
 import 'package:betting_tips/services/api_constant.dart';
 import 'package:betting_tips/services/api_utils.dart';
+import 'package:betting_tips/utils/global.dart';
 import 'package:get_storage/get_storage.dart';
 
 import '../models/config_model.dart';
@@ -26,6 +27,14 @@ class ApiRepo {
         apiUtils.setCookies(cookies?[0] ?? '');
       }
       print("cookies>>>${cookies?[0].toString()}");
+      // Global.cookie =
+      //     response.headers.map["set-cookie"]?.first.split(";").first ?? '';
+      // if ((Global.cookie).isNotEmpty) {
+      //   final box = GetStorage();
+      //   box.write('cookies', Global.cookie);
+      //   apiUtils.setCookiesJar(Global.cookie);
+      // }
+      // print("cookies>>>${Global.cookie}");
       final guest = response.data;
       return UserModel.fromJson(guest);
     } catch (e) {

@@ -11,7 +11,7 @@ import 'package:path_provider/path_provider.dart';
 
 class ApiUtils {
   final _dio = Dio();
-  static PersistCookieJar? _cookieJar;
+  // static PersistCookieJar? _cookieJar;
 
   final box = GetStorage();
 
@@ -38,22 +38,29 @@ class ApiUtils {
     print("git cookies>>$cookies");
   }
 
-  static Future<PersistCookieJar> get cookieJar async {
-    if (_cookieJar == null) {
-      Directory appDocDir = await getApplicationDocumentsDirectory();
-      String appDocPath = appDocDir.path;
-      print("Obtained file system directory appdocpath: " + appDocPath);
-      _cookieJar = PersistCookieJar(storage: FileStorage(appDocPath));
-    }
-    return _cookieJar!;
-  }
+  // static Future<PersistCookieJar> get cookieJar async {
+  //   if (_cookieJar == null) {
+  //     Directory appDocDir = await getApplicationDocumentsDirectory();
+  //     String appDocPath = appDocDir.path;
+  //     print("Obtained file system directory appdocpath: " + appDocPath);
+  //     _cookieJar = PersistCookieJar(storage: FileStorage(appDocPath));
+  //   }
+  //   return _cookieJar!;
+  // }
 
   void setCookies(String cookies) {
     int index = cookies.indexOf(';');
     String session = cookies.substring(0, index);
     _dio.options.headers['Cookie'] = session;
-    print("Cookies>>>$session");
   }
+
+  // void setCookiesJar(String cookie) async {
+  //   _dio.interceptors.clear();
+  //   _dio.interceptors.add(CookieManager(await cookieJar));
+  //   _dio.interceptors
+  //       .add(LogInterceptor(requestBody: true, responseBody: true));
+  //   _dio.options.headers['Cookie'] = cookie;
+  // }
 
   Future<Response> get({
     required String url,
