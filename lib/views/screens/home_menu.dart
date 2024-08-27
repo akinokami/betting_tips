@@ -40,7 +40,7 @@ class Home extends StatelessWidget {
             items: [
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.sports_football,
+                  Icons.sports_soccer,
                   size: 15.sp,
                 ),
                 label: 'football'.tr,

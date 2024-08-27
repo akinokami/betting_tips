@@ -7,7 +7,6 @@ import 'package:betting_tips/models/sport_date.dart';
 import 'package:betting_tips/models/user_model.dart';
 import 'package:betting_tips/services/api_constant.dart';
 import 'package:betting_tips/services/api_utils.dart';
-import 'package:betting_tips/utils/global.dart';
 import 'package:get_storage/get_storage.dart';
 
 import '../models/config_model.dart';
