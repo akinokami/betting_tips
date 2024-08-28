@@ -19,7 +19,11 @@ class SplashScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            FlutterLogo(size: 80.sp),
+            // FlutterLogo(size: 80.sp),
+            Image.asset(
+              'assets/tips.webp',
+              height: 80.h,
+            ),
             SizedBox(height: 30.h),
             CustomText(
               text: 'betting_tips'.tr,
