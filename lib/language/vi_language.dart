@@ -53,7 +53,7 @@ class ViLanguage {
     'club_records': 'Hồ sơ câu lạc bộ',
     'live': 'Sống',
     'scores': 'Điểm số',
-    'betting_tips': 'Dự đoán tỷ số thể thao',
+    'betting_tips': 'MK: thể thao Dự đoán tỷ số',
     'upcoming': 'Sắp tới',
     'finished': 'Hoàn thành',
     'upcoming_tips': 'Mẹo sắp tới',

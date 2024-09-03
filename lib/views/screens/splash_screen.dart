@@ -21,7 +21,7 @@ class SplashScreen extends StatelessWidget {
           children: [
             // FlutterLogo(size: 80.sp),
             Image.asset(
-              'assets/tips.webp',
+              'assets/mk.webp',
               height: 80.h,
             ),
             SizedBox(height: 30.h),

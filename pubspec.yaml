@@ -105,5 +105,5 @@ flutter:
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/tips.webp"
+  image_path: "assets/mk.webp"
   min_sdk_android: 21
