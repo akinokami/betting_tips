@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:betting_tips/models/api_config_model.dart';
 import 'package:betting_tips/models/m_result_model.dart';
 import 'package:betting_tips/models/match_model.dart';
 import 'package:betting_tips/models/other_model.dart';
@@ -26,16 +27,19 @@ class ApiRepo {
         apiUtils.setCookies(cookies?[0] ?? '');
       }
       print("cookies>>>${cookies?[0].toString()}");
-      // Global.cookie =
-      //     response.headers.map["set-cookie"]?.first.split(";").first ?? '';
-      // if ((Global.cookie).isNotEmpty) {
-      //   final box = GetStorage();
-      //   box.write('cookies', Global.cookie);
-      //   apiUtils.setCookiesJar(Global.cookie);
-      // }
-      // print("cookies>>>${Global.cookie}");
       final guest = response.data;
       return UserModel.fromJson(guest);
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
+  Future<ApiConfigModel> getApiConfig(String userId) async {
+    try {
+      final response =
+          await apiUtils.get(url: "${ApiConstant.baseUrl}config/$userId");
+      final guest = response.data;
+      return ApiConfigModel.fromJson(guest);
     } catch (e) {
       throw CustomException(e.toString());
     }

@@ -30,6 +30,7 @@ class SplashController extends GetxController {
     isLoading.value = true;
     try {
       final result = await ApiRepo().getConfig();
+
       if (result.isApiCall == true) {
         getGuestUser();
       } else {
@@ -52,6 +53,7 @@ class SplashController extends GetxController {
     try {
       final result = await ApiRepo().getGuestUser();
       await box.write('userId', result.sId);
+      // getApiConfig(result.sId ?? '');
       Get.offAll(() => Home());
     } catch (e) {
       constants.showSnackBar(
@@ -60,6 +62,20 @@ class SplashController extends GetxController {
       isLoading.value = false;
     }
   }
+
+  // Future<void> getApiConfig(String? userId) async {
+  //   isLoading.value = true;
+  //   try {
+  //     final result = await ApiRepo().getApiConfig(userId ?? '');
+
+  //     Get.offAll(() => Home());
+  //   } catch (e) {
+  //     constants.showSnackBar(
+  //         title: 'Error', msg: e.toString(), textColor: AppTheme.red);
+  //   } finally {
+  //     isLoading.value = false;
+  //   }
+  // }
 
   @override
   void onClose() {
